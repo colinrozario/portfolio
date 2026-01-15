@@ -9,19 +9,24 @@
 }
 
 .cursor-dot-inner {
-    width: 8px;
-    height: 8px;
+    /* Techy cyan/green */
     background-color: #64ffda;
     border-radius: 0;
+    /* Square/Diamond */
     transform: translate(-50%, -50%) rotate(45deg);
+    /* Center and rotate */
+    transition: transform 0.1s;
     box-shadow: 0 0 5px #64ffda;
+    /* Glow */
 }
 
 .cursor-ring-inner {
     width: 30px;
     height: 30px;
     border: 1px dashed rgba(100, 255, 218, 0.5);
+    /* Hardcoded RGBA approximation of #00F050 or use calc if possible, but manual is safer here for rgba opacity */
     border-radius: 0;
+    /* Square */
     transform: translate(-50%, -50%);
     background-color: transparent;
     transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s, transform 0.2s;
@@ -34,7 +39,9 @@
     background-color: rgba(100, 255, 218, 0.1);
     border-color: #64ffda;
     border-style: solid;
+    /* Solid on hover */
     transform: translate(-50%, -50%) rotate(90deg);
+    /* Rotate on hover */
 }
 
 /* Hide default cursor globally */

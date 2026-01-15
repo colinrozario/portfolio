@@ -1,129 +1,53 @@
-.stack-section {
+.about-section {
     padding: 8rem 0;
-    min-height: 80vh;
+    min-height: 50vh;
+    /* Not full height, just a section */
     background: var(--bg-primary);
-}
-
-.stack-header {
-    margin-bottom: 4rem;
-}
-
-.section-title {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-}
-
-.section-desc {
-    color: var(--text-secondary);
-    font-size: 1.2rem;
-    border-left: 2px solid var(--accent-green);
-    padding-left: 1rem;
-}
-
-.stack-tabs {
     display: flex;
-    gap: 2rem;
-    margin-bottom: 3rem;
-    border-bottom: 1px solid var(--bg-secondary);
-    padding-bottom: 1rem;
-    overflow-x: auto;
+    align-items: center;
 }
 
-.tab-btn {
-    font-size: 1.1rem;
-    color: var(--text-dim);
-    padding: 0.5rem 0;
-    position: relative;
-    transition: all 0.3s;
-    font-family: var(--font-display);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.tab-btn:hover {
-    color: var(--text-primary);
-}
-
-.tab-btn.active {
-    color: var(--accent-green);
-}
-
-.tab-btn.active::after {
-    content: '';
-    position: absolute;
-    bottom: -17px;
-    /* Align with border-bottom of stack-tabs */
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--accent-green);
-}
-
-.stack-grid {
+.about-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
 }
 
-.tool-card {
-    background: var(--bg-secondary);
-    padding: 2.5rem;
+.about-header h2 {
+    font-size: 4rem;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.about-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
+    gap: 2rem;
 }
 
-.tool-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-green);
-    background: #2e2e2e;
-}
-
-.tool-icon {
-    font-size: 3rem;
-    color: var(--text-secondary);
-    transition: color 0.3s;
-}
-
-.tool-card:hover .tool-icon {
-    color: var(--accent-green);
-}
-
-.tool-name {
-    font-weight: 500;
+.about-quote {
+    font-size: 1.5rem;
     color: var(--text-primary);
-    font-size: 1rem;
+    border-left: 2px solid var(--accent-green);
+    padding-left: 1.5rem;
+    font-weight: 500;
 }
 
-/* Simple fade in animation for tab switching */
-.fadeIn {
-    animation: fadeIn 0.5s ease;
+.about-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 600px;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@media (max-width: 600px) {
-    .section-title {
+    .about-header h2 {
         font-size: 3rem;
-    }
-
-    .stack-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
     }
 }

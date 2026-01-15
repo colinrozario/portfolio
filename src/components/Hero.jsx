@@ -13,17 +13,6 @@ const Hero = () => {
                             <span className="text-outline">AI/ML ENGINEER</span>
                         </h1>
 
-                        <div className="bio-container">
-                            <h3 className="bio-title font-body">
-                                I believe in a data-driven approach, ensuring that every model I build is tailored to solve real-world problems.
-                            </h3>
-                            <p className="description font-body">
-                                Hi! I'm Colin. A creative Aspiring AI/ML Engineer with a passion for building intelligent systems.
-                                I specialize in creating seamless and intuitive user experiences powered by data.
-                                My approach focuses on creating scalable, high-performing solutions tailored to both user needs and business objectives.
-                            </p>
-                        </div>
-
                         <a href="#contact" className="hire-btn font-display">GET IN TOUCH</a>
                     </div>
 
