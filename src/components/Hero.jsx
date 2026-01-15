@@ -1,4 +1,5 @@
 import React from 'react';
+import ProfileCard from './ProfileCard';
 import '../styles/Hero.css';
 
 const Hero = () => {
@@ -13,22 +14,16 @@ const Hero = () => {
                             <span className="text-outline">AI/ML ENGINEER</span>
                         </h1>
 
+                        <p className="description">
+                            Passionate about building intelligent systems and crafting intuitive user experiences.
+                            Let's solve complex problems together.
+                        </p>
+
                         <a href="#contact" className="hire-btn font-display">GET IN TOUCH</a>
                     </div>
 
-                    <div className="hero-stats font-display">
-                        <div className="stat-item">
-                            <span className="stat-num text-accent">3+</span>
-                            <span className="stat-label">Years Exp.</span>
-                        </div>
-                        <div className="stat-item">
-                            <span className="stat-num text-accent">15+</span>
-                            <span className="stat-label">Projects</span>
-                        </div>
-                        <div className="stat-item">
-                            <span className="stat-num text-accent">10K+</span>
-                            <span className="stat-label">Hours Code</span>
-                        </div>
+                    <div className="hero-visual">
+                        <ProfileCard />
                     </div>
                 </div>
             </div>

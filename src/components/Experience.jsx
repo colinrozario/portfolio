@@ -5,24 +5,17 @@ const Experience = () => {
     const experiences = [
         {
             id: 1,
-            role: 'Machine Learning Intern',
-            company: 'Tech Innovations Inc.',
-            period: 'Jan 2024 - Present',
+            role: 'Software Engineer-INTERN',
+            company: 'ivPRO Technologies,Coimbatore',
+            period: 'December 2025 - Present',
             description: 'Developing computer vision models for quality control. collaborating with senior engineers to optimize model inference time.'
         },
         {
             id: 2,
-            role: 'Data Science Student',
-            company: 'University Project',
-            period: 'Sept 2023 - Dec 2023',
+            role: 'AI/ML- INTERN',
+            company: 'SolutionChamps Technologies,Coimbatore',
+            period: 'April 2025 - June 2025',
             description: 'Led a team of 4 to analyze large datasets using Pandas and Scikit-Learn. Built a predictive model with 92% accuracy.'
-        },
-        {
-            id: 3,
-            role: 'Web Development Freelancer',
-            company: 'Self-Employed',
-            period: '2022 - 2023',
-            description: 'Built responsive websites for local businesses using React and modern CSS. Learned the fundamentals of software engineering.'
         }
     ];
 

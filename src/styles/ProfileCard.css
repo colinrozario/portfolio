@@ -1,0 +1,136 @@
+.profile-card-wrapper {
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 450px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.profile-card {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+    transform-style: preserve-3d;
+}
+
+.profile-img-container {
+    width: 250px;
+    height: 250px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    background: #ff5722;
+    /* Fallback color matching the illustration bg */
+    position: relative;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info {
+    text-align: center;
+    width: 100%;
+    z-index: 2;
+}
+
+.profile-name {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.2;
+    font-family: var(--font-display);
+}
+
+.profile-role {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0.5rem 0 1.5rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.profile-socials {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: auto;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    color: #ff5722;
+    /* Orange accent */
+    transition: transform 0.2s ease, color 0.2s ease;
+    cursor: none;
+    /* Let custom cursor handle it */
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
+    color: #e64a19;
+}
+
+/* Chain Overlay - The "Dogtag" string */
+.chain-overlay {
+    position: absolute;
+    top: -150px;
+    /* Extend above the card */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 350px;
+    height: 600px;
+    pointer-events: none;
+    z-index: 20;
+    /* Above card */
+}
+
+.chain-path {
+    fill: none;
+    stroke: #ff9100;
+    /* Orange string */
+    stroke-width: 3;
+    stroke-dasharray: 10, 10;
+    stroke-linecap: round;
+}
+
+/* Hole punch effect */
+.card-hole {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    width: 12px;
+    height: 12px;
+    background: #1a1a1a;
+    /* Dark hole */
+    border-radius: 50%;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 15;
+}
+
+@media (max-width: 768px) {
+    .profile-card-wrapper {
+        width: 260px;
+        height: 400px;
+    }
+
+    .profile-img-container {
+        width: 100%;
+        height: 200px;
+    }
+}

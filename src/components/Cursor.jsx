@@ -2,36 +2,27 @@ import React, { useEffect, useRef } from 'react';
 import '../styles/Cursor.css';
 
 const Cursor = () => {
-    const dotRef = useRef(null);
-    const ringRef = useRef(null);
+    const cursorRef = useRef(null);
 
     useEffect(() => {
-        const dot = dotRef.current;
-        const ring = ringRef.current;
-
-        let mouseX = 0;
-        let mouseY = 0;
-        let ringX = 0;
-        let ringY = 0;
+        const cursor = cursorRef.current;
+        let mouseX = -100;
+        let mouseY = -100;
+        let cursorX = -100;
+        let cursorY = -100;
 
         const onMouseMove = (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-
-            // Immediate update for dot
-            if (dot) {
-                dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-            }
         };
 
         const animate = () => {
-            // Lerp for ring (smoother/slower)
-            const ease = 0.1;
-            ringX += (mouseX - ringX) * ease;
-            ringY += (mouseY - ringY) * ease;
+            const ease = 0.15; // Slightly faster for responsiveness
+            cursorX += (mouseX - cursorX) * ease;
+            cursorY += (mouseY - cursorY) * ease;
 
-            if (ring) {
-                ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+            if (cursor) {
+                cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
             }
 
             requestAnimationFrame(animate);
@@ -42,12 +33,10 @@ const Cursor = () => {
 
         // Hover Effects
         const handleMouseEnter = () => {
-            ring?.classList.add('hovering');
-            dot?.classList.add('hovering');
+            cursor?.classList.add('hovering');
         };
         const handleMouseLeave = () => {
-            ring?.classList.remove('hovering');
-            dot?.classList.remove('hovering');
+            cursor?.classList.remove('hovering');
         };
 
         const addListeners = () => {
@@ -60,7 +49,6 @@ const Cursor = () => {
 
         addListeners();
 
-        // Mutation observer to handle new elements (like switching tabs in Skills)
         const observer = new MutationObserver(() => {
             addListeners();
         });
@@ -79,14 +67,7 @@ const Cursor = () => {
     }, []);
 
     return (
-        <>
-            <div ref={ringRef} className="cursor-ring-wrapper">
-                <div className="cursor-ring-inner" />
-            </div>
-            <div ref={dotRef} className="cursor-dot-wrapper">
-                <div className="cursor-dot-inner" />
-            </div>
-        </>
+        <div ref={cursorRef} className="custom-cursor" />
     );
 };
 

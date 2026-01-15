@@ -1,67 +1,77 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     SiPython, SiTensorflow, SiPytorch, SiScikitlearn,
     SiReact, SiDocker, SiAwslambda, SiPostgresql,
     SiJavascript, SiTypescript, SiHtml5, SiCss3,
-    SiNodedotjs, SiGit, SiMongodb, SiFastapi
+    SiNodedotjs, SiGit, SiMongodb, SiFastapi, SiRedux, SiTailwindcss, SiSass, SiBootstrap, SiNextdotjs, SiNestjs
 } from 'react-icons/si';
+import { motion } from 'framer-motion';
 import '../styles/Stack.css';
 
-const stackData = {
-    "Frontend": [
-        { name: 'React', icon: <SiReact /> },
-        { name: 'JavaScript', icon: <SiJavascript /> },
-        { name: 'TypeScript', icon: <SiTypescript /> },
-        { name: 'HTML5', icon: <SiHtml5 /> },
-        { name: 'CSS3', icon: <SiCss3 /> },
-    ],
-    "Backend": [
-        { name: 'Python', icon: <SiPython /> },
-        { name: 'Node.js', icon: <SiNodedotjs /> },
-        { name: 'FastAPI', icon: <SiFastapi /> },
-        { name: 'PostgreSQL', icon: <SiPostgresql /> },
-        { name: 'MongoDB', icon: <SiMongodb /> },
-    ],
-    "AI / ML": [
-        { name: 'TensorFlow', icon: <SiTensorflow /> },
-        { name: 'PyTorch', icon: <SiPytorch /> },
-        { name: 'Scikit-Learn', icon: <SiScikitlearn /> },
-    ],
-    "Tools": [
-        { name: 'Docker', icon: <SiDocker /> },
-        { name: 'AWS', icon: <SiAwslambda /> },
-        { name: 'Git', icon: <SiGit /> },
-    ]
-};
+const stackData = [
+    {
+        category: "FRONTEND",
+        tools: [
+            { name: 'JavaScript', icon: <SiJavascript />, color: '#F7DF1E' },
+            { name: 'TypeScript', icon: <SiTypescript />, color: '#3178C6' },
+            { name: 'React', icon: <SiReact />, color: '#61DAFB' },
+            { name: 'Next.js', icon: <SiNextdotjs />, color: '#ffffff' },
+            { name: 'Redux', icon: <SiRedux />, color: '#764ABC' },
+            { name: 'Tailwind CSS', icon: <SiTailwindcss />, color: '#06B6D4' },
+            { name: 'Sass', icon: <SiSass />, color: '#CC6699' },
+            { name: 'Bootstrap', icon: <SiBootstrap />, color: '#7952B3' },
+        ]
+    },
+    {
+        category: "BACKEND",
+        tools: [
+            { name: 'Node.js', icon: <SiNodedotjs />, color: '#339933' },
+            { name: 'NestJS', icon: <SiNestjs />, color: '#E0234E' }, // Added NestJS as per reference if available, or just generic
+            { name: 'Python', icon: <SiPython />, color: '#3776AB' },
+            { name: 'FastAPI', icon: <SiFastapi />, color: '#009688' },
+            { name: 'PostgreSQL', icon: <SiPostgresql />, color: '#4169E1' },
+            { name: 'MongoDB', icon: <SiMongodb />, color: '#47A248' },
+        ]
+    },
+    {
+        category: "AI / ML",
+        tools: [
+            { name: 'TensorFlow', icon: <SiTensorflow />, color: '#FF6F00' },
+            { name: 'PyTorch', icon: <SiPytorch />, color: '#EE4C2C' },
+            { name: 'Scikit-Learn', icon: <SiScikitlearn />, color: '#F7931E' },
+        ]
+    }
+];
 
 const Stack = () => {
-    const [activeTab, setActiveTab] = useState("Frontend");
-
     return (
         <section id="stack" className="stack-section">
             <div className="container">
                 <div className="stack-header">
                     <h2 className="section-title font-display">MY <span className="text-outline">STACK</span></h2>
-                    <p className="section-desc">Tools & Technologies I work with</p>
                 </div>
 
-                <div className="stack-tabs">
-                    {Object.keys(stackData).map(category => (
-                        <button
-                            key={category}
-                            className={`tab-btn ${activeTab === category ? 'active' : ''}`}
-                            onClick={() => setActiveTab(category)}
-                        >
-                            {category}
-                        </button>
-                    ))}
-                </div>
-
-                <div className="stack-grid">
-                    {stackData[activeTab].map((tool, index) => (
-                        <div key={index} className="tool-card fadeIn">
-                            <div className="tool-icon">{tool.icon}</div>
-                            <span className="tool-name">{tool.name}</span>
+                <div className="stack-groups">
+                    {stackData.map((group, groupIndex) => (
+                        <div key={groupIndex} className="stack-group">
+                            <h3 className="group-title font-display">{group.category}</h3>
+                            <div className="group-grid">
+                                {group.tools.map((tool, toolIndex) => (
+                                    <motion.div
+                                        key={toolIndex}
+                                        className="tool-item"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, margin: "-50px" }}
+                                        transition={{ duration: 0.5, delay: toolIndex * 0.1 }}
+                                    >
+                                        <span className="tool-icon" style={{ color: tool.color }}>
+                                            {tool.icon}
+                                        </span>
+                                        <span className="tool-name">{tool.name}</span>
+                                    </motion.div>
+                                ))}
+                            </div>
                         </div>
                     ))}
                 </div>

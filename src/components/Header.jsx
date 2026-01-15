@@ -40,8 +40,9 @@ const Header = () => {
                         <a href="#hero" onClick={toggleMenu}><span className="nav-num">01</span>Home</a>
                         <a href="#about" onClick={toggleMenu}><span className="nav-num">02</span>About</a>
                         <a href="#stack" onClick={toggleMenu}><span className="nav-num">03</span>Skills</a>
-                        <a href="#projects" onClick={toggleMenu}><span className="nav-num">04</span>Projects</a>
-                        <a href="#contact" onClick={toggleMenu}><span className="nav-num">05</span>Contact</a>
+                        <a href="#experience" onClick={toggleMenu}><span className="nav-num">04</span>Experience</a>
+                        <a href="#projects" onClick={toggleMenu}><span className="nav-num">05</span>Projects</a>
+                        <a href="#contact" onClick={toggleMenu}><span className="nav-num">06</span>Contact</a>
                     </div>
                 </nav>
             </div>

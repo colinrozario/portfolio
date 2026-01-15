@@ -1,47 +1,26 @@
-.cursor-dot-wrapper,
-.cursor-ring-wrapper {
+/* Main cursor container */
+.custom-cursor {
     position: fixed;
     top: 0;
     left: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    border-radius: 50%;
     pointer-events: none;
     z-index: 10000;
-    mix-blend-mode: exclusion;
-}
-
-.cursor-dot-inner {
-    /* Techy cyan/green */
-    background-color: #64ffda;
-    border-radius: 0;
-    /* Square/Diamond */
-    transform: translate(-50%, -50%) rotate(45deg);
-    /* Center and rotate */
-    transition: transform 0.1s;
-    box-shadow: 0 0 5px #64ffda;
-    /* Glow */
-}
-
-.cursor-ring-inner {
-    width: 30px;
-    height: 30px;
-    border: 1px dashed rgba(100, 255, 218, 0.5);
-    /* Hardcoded RGBA approximation of #00F050 or use calc if possible, but manual is safer here for rgba opacity */
-    border-radius: 0;
-    /* Square */
+    mix-blend-mode: difference;
+    /* Ensures visibility on light/dark backgrounds */
     transform: translate(-50%, -50%);
-    background-color: transparent;
-    transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s, transform 0.2s;
+    transition: width 0.3s, height 0.3s, background-color 0.3s;
 }
 
-/* Hover State - Applied to the wrapper by JS, targeting inner */
-.cursor-ring-wrapper.hovering .cursor-ring-inner {
+/* Hover State */
+.custom-cursor.hovering {
     width: 50px;
     height: 50px;
-    background-color: rgba(100, 255, 218, 0.1);
-    border-color: #64ffda;
-    border-style: solid;
-    /* Solid on hover */
-    transform: translate(-50%, -50%) rotate(90deg);
-    /* Rotate on hover */
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: white;
 }
 
 /* Hide default cursor globally */
@@ -54,9 +33,7 @@ button,
 
 /* Mobile check */
 @media (hover: none) and (pointer: coarse) {
-
-    .cursor-dot-wrapper,
-    .cursor-ring-wrapper {
+    .custom-cursor {
         display: none;
     }
 
