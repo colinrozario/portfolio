@@ -1,0 +1,64 @@
+.cursor-dot,
+.cursor-trailer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate3d(-100px, -100px, 0);
+    /* Hide initially */
+    pointer-events: none;
+    z-index: 9999;
+    border-radius: 50%;
+    mix-blend-mode: difference;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    margin-left: -4px;
+    /* Center */
+    margin-top: -4px;
+}
+
+.cursor-trailer {
+    width: 40px;
+    height: 40px;
+    border: 1px solid white;
+    margin-left: -20px;
+    /* Center */
+    margin-top: -20px;
+    transition: width 0.3s, height 0.3s, background-color 0.3s;
+    background-color: transparent;
+}
+
+.cursor-trailer.hovering {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-left: -30px;
+    margin-top: -30px;
+    backdrop-filter: blur(2px);
+    border-color: transparent;
+}
+
+/* Hide default cursor globally */
+body,
+a,
+button {
+    cursor: none !important;
+}
+
+/* Ensure mobile doesn't have custom cursor issues */
+@media (hover: none) and (pointer: coarse) {
+
+    .cursor-dot,
+    .cursor-trailer {
+        display: none;
+    }
+
+    body,
+    a,
+    button {
+        cursor: auto !important;
+    }
+}

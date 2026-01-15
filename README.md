@@ -1,16 +1,47 @@
-# React + Vite
+# Colin's Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, interactive portfolio website built with React and Vite, featuring physics-based animations and a custom design system.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   **Falling Skills Section**: An interactive physics playground powered by `matter-js` where skill icons fall, collide, and can be thrown around.
+-   **Custom Cursor**: A "top-notch" follower cursor with dynamic hover effects and trail animation.
+-   **Particle Background**: interactive background particles using `tsparticles`.
+-   **Responsive Design**: Fully responsive layout for all devices.
+-   **Modern UI/UX**: Glassmorphism, neon accents, and smooth transitions.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+-   **Frontend Framework**: React 18+ (Vite)
+-   **Physics Engine**: Matter.js
+-   **Styling**: CSS Modules / Vanilla CSS Variables
+-   **Icons**: React Icons
+-   **Particles**: tsparticles
 
-## Expanding the ESLint configuration
+## 🏃‍♂️ Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1.  **Clone the repository**
+    ```bash
+    git clone <repository-url>
+    ```
+
+2.  **Install dependencies**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+3.  **Run the development server**
+    ```bash
+    npm run dev
+    ```
+
+4.  **Build for production**
+    ```bash
+    npm run build
+    ```
+
+## 🎨 Design Notes
+
+The design uses a dark theme with high-contrast neon green accents (`#00F050`) and subtle component interactions to create an engaging user experience.
