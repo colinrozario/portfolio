@@ -1,122 +1,67 @@
-import React, { useEffect, useRef, useState } from 'react';
-import Matter from 'matter-js';
+import React, { useState } from 'react';
 import {
     SiPython, SiTensorflow, SiPytorch, SiScikitlearn,
-    SiReact, SiDocker, SiAwslambda, SiPostgresql
+    SiReact, SiDocker, SiAwslambda, SiPostgresql,
+    SiJavascript, SiTypescript, SiHtml5, SiCss3,
+    SiNodedotjs, SiGit, SiMongodb, SiFastapi
 } from 'react-icons/si';
 import '../styles/About.css';
 
-const skills = [
-    { name: 'Python', category: 'AI/ML', icon: <SiPython /> },
-    { name: 'TensorFlow', category: 'AI/ML', icon: <SiTensorflow /> },
-    { name: 'PyTorch', category: 'AI/ML', icon: <SiPytorch /> },
-    { name: 'Scikit', category: 'AI/ML', icon: <SiScikitlearn /> },
-    { name: 'React', category: 'DEV', icon: <SiReact /> },
-    { name: 'PostgreSQL', category: 'DEV', icon: <SiPostgresql /> },
-    { name: 'Docker', category: 'DEV', icon: <SiDocker /> },
-    { name: 'AWS', category: 'DEV', icon: <SiAwslambda /> },
-];
+const stackData = {
+    "Frontend": [
+        { name: 'React', icon: <SiReact /> },
+        { name: 'JavaScript', icon: <SiJavascript /> },
+        { name: 'TypeScript', icon: <SiTypescript /> },
+        { name: 'HTML5', icon: <SiHtml5 /> },
+        { name: 'CSS3', icon: <SiCss3 /> },
+    ],
+    "Backend": [
+        { name: 'Python', icon: <SiPython /> },
+        { name: 'Node.js', icon: <SiNodedotjs /> },
+        { name: 'FastAPI', icon: <SiFastapi /> },
+        { name: 'PostgreSQL', icon: <SiPostgresql /> },
+        { name: 'MongoDB', icon: <SiMongodb /> },
+    ],
+    "AI / ML": [
+        { name: 'TensorFlow', icon: <SiTensorflow /> },
+        { name: 'PyTorch', icon: <SiPytorch /> },
+        { name: 'Scikit-Learn', icon: <SiScikitlearn /> },
+    ],
+    "Tools": [
+        { name: 'Docker', icon: <SiDocker /> },
+        { name: 'AWS', icon: <SiAwslambda /> },
+        { name: 'Git', icon: <SiGit /> },
+    ]
+};
 
 const About = () => {
-    const sceneRef = useRef(null);
-    const engineRef = useRef(null);
-    const renderRef = useRef(null);
-    const itemsRef = useRef([]);
-
-    useEffect(() => {
-        // Physics setup
-        const Engine = Matter.Engine;
-        const Render = Matter.Render;
-        const World = Matter.World;
-        const Bodies = Matter.Bodies;
-        const Mouse = Matter.Mouse;
-        const MouseConstraint = Matter.MouseConstraint;
-
-        const engine = Engine.create();
-        engineRef.current = engine;
-
-        const container = sceneRef.current;
-        const width = container.clientWidth;
-        const height = container.clientHeight;
-
-        // Create bodies for each skill
-        const bodies = skills.map((skill, index) => {
-            const x = Math.random() * (width - 100) + 50;
-            const y = -Math.random() * 500 - 100; // Start above viewport
-
-            return Bodies.rectangle(x, y, 80, 80, { // Approximate card size
-                restitution: 0.5,
-                friction: 0.1,
-                render: { opacity: 0 } // Invisible physics body
-            });
-        });
-
-        // Add walls
-        const ground = Bodies.rectangle(width / 2, height + 50, width, 100, { isStatic: true, render: { opacity: 0 } });
-        const leftWall = Bodies.rectangle(-50, height / 2, 100, height * 2, { isStatic: true, render: { opacity: 0 } });
-        const rightWall = Bodies.rectangle(width + 50, height / 2, 100, height * 2, { isStatic: true, render: { opacity: 0 } });
-
-        World.add(engine.world, [...bodies, ground, leftWall, rightWall]);
-
-        // Mouse control
-        const mouse = Mouse.create(container);
-        const mouseConstraint = MouseConstraint.create(engine, {
-            mouse: mouse,
-            constraint: {
-                stiffness: 0.2,
-                render: { visible: false }
-            }
-        });
-        // Scroll fix for mouse interaction
-        mouseConstraint.mouse.element.removeEventListener("mousewheel", mouseConstraint.mouse.mousewheel);
-        mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", mouseConstraint.mouse.mousewheel);
-
-        World.add(engine.world, mouseConstraint);
-
-        // Run the engine
-        Matter.Runner.run(engine);
-
-        // Sync loop
-        let animationId;
-        const update = () => {
-            bodies.forEach((body, index) => {
-                const item = itemsRef.current[index];
-                if (item) {
-                    const { x, y } = body.position;
-                    const angle = body.angle;
-                    item.style.transform = `translate(${x - 40}px, ${y - 40}px) rotate(${angle}rad)`; // -40 for center offset (half of 80 width)
-                }
-            });
-            animationId = requestAnimationFrame(update);
-        };
-        update();
-
-        // Cleanup
-        return () => {
-            cancelAnimationFrame(animationId);
-            Matter.Engine.clear(engine);
-            Matter.World.clear(engine.world);
-        };
-    }, []);
+    const [activeTab, setActiveTab] = useState("Frontend");
 
     return (
         <section id="stack" className="stack-section">
-            <div className="container" style={{ position: 'relative', height: '100%' }}>
-                <div className="stack-header-static">
-                    <h2 className="stack-title font-display text-outline">Skills</h2>
-                    <p className="stack-desc">Drag and throw the technologies I use.</p>
+            <div className="container">
+                <div className="stack-header">
+                    <h2 className="section-title font-display">MY <span className="text-outline">STACK</span></h2>
+                    <p className="section-desc">Tools & Technologies I work with</p>
                 </div>
 
-                <div ref={sceneRef} className="physics-container">
-                    {skills.map((skill, index) => (
-                        <div
-                            key={index}
-                            ref={el => itemsRef.current[index] = el}
-                            className="physics-item tool-card"
-                            style={{ position: 'absolute', left: 0, top: 0, width: '80px', height: '80px' }} // Initial positioning
+                <div className="stack-tabs">
+                    {Object.keys(stackData).map(category => (
+                        <button
+                            key={category}
+                            className={`tab-btn ${activeTab === category ? 'active' : ''}`}
+                            onClick={() => setActiveTab(category)}
                         >
-                            <div className="tool-icon" style={{ fontSize: '2rem' }}>{skill.icon}</div>
-                            <span className="tool-name" style={{ fontSize: '0.7rem' }}>{skill.name}</span>
+                            {category}
+                        </button>
+                    ))}
+                </div>
+
+                <div className="stack-grid">
+                    {stackData[activeTab].map((tool, index) => (
+                        <div key={index} className="tool-card fadeIn">
+                            <div className="tool-icon">{tool.icon}</div>
+                            <span className="tool-name">{tool.name}</span>
                         </div>
                     ))}
                 </div>

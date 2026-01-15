@@ -1,78 +1,129 @@
 .stack-section {
-    position: relative;
-    padding: 5rem 0;
+    padding: 8rem 0;
+    min-height: 80vh;
     background: var(--bg-primary);
-    overflow: hidden;
-    height: 100vh;
-    /* Full viewport height for physics playground */
 }
 
-.stack-header-static {
-    text-align: center;
-    margin-bottom: 2rem;
-    z-index: 10;
-    position: relative;
-    pointer-events: none;
-    /* Let clicks pass through to physics items if they overlap */
+.stack-header {
+    margin-bottom: 4rem;
 }
 
-.stack-title {
-    font-size: 6rem;
-    line-height: 1;
-    margin-bottom: 0.5rem;
+.section-title {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
 }
 
-.stack-desc {
+.section-desc {
     color: var(--text-secondary);
     font-size: 1.2rem;
+    border-left: 2px solid var(--accent-green);
+    padding-left: 1rem;
 }
 
-.physics-container {
-    width: 100%;
-    height: 100%;
-    /* Fill the section */
+.stack-tabs {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--bg-secondary);
+    padding-bottom: 1rem;
+    overflow-x: auto;
+}
+
+.tab-btn {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    padding: 0.5rem 0;
+    position: relative;
+    transition: all 0.3s;
+    font-family: var(--font-display);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.tab-btn:hover {
+    color: var(--text-primary);
+}
+
+.tab-btn.active {
+    color: var(--accent-green);
+}
+
+.tab-btn.active::after {
+    content: '';
     position: absolute;
-    top: 0;
+    bottom: -17px;
+    /* Align with border-bottom of stack-tabs */
     left: 0;
-    z-index: 1;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-green);
 }
 
-.physics-item {
+.stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 2rem;
+}
+
+.tool-card {
     background: var(--bg-secondary);
-    border-radius: 12px;
+    padding: 2.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    cursor: grab;
-    user-select: none;
-    will-change: transform;
+    gap: 1.5rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
 }
 
-.physics-item:active {
-    cursor: grabbing;
-    background: #333;
-    border: 1px solid var(--accent-green);
+.tool-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-green);
+    background: #2e2e2e;
 }
 
 .tool-icon {
-    color: var(--text-primary);
+    font-size: 3rem;
+    color: var(--text-secondary);
     transition: color 0.3s;
 }
 
-.physics-item:hover .tool-icon {
+.tool-card:hover .tool-icon {
     color: var(--accent-green);
 }
 
 .tool-name {
-    font-weight: 600;
-    color: var(--text-secondary);
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 1rem;
 }
 
-@media (max-width: 768px) {
-    .stack-title {
-        font-size: 4rem;
+/* Simple fade in animation for tab switching */
+.fadeIn {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .section-title {
+        font-size: 3rem;
+    }
+
+    .stack-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 }

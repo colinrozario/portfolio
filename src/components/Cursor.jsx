@@ -1,37 +1,37 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import '../styles/Cursor.css';
 
 const Cursor = () => {
-    const cursorRef = useRef(null);
-    const trailerRef = useRef(null);
+    const dotRef = useRef(null);
+    const ringRef = useRef(null);
 
     useEffect(() => {
-        const cursor = cursorRef.current;
-        const trailer = trailerRef.current;
+        const dot = dotRef.current;
+        const ring = ringRef.current;
 
         let mouseX = 0;
         let mouseY = 0;
-        let trailerX = 0;
-        let trailerY = 0;
+        let ringX = 0;
+        let ringY = 0;
 
         const onMouseMove = (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
 
-            // Instant update for the main dot
-            if (cursor) {
-                cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+            // Immediate update for dot
+            if (dot) {
+                dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
             }
         };
 
         const animate = () => {
-            // Lerp for the trailer
-            const ease = 0.15;
-            trailerX += (mouseX - trailerX) * ease;
-            trailerY += (mouseY - trailerY) * ease;
+            // Lerp for ring (smoother/slower)
+            const ease = 0.1;
+            ringX += (mouseX - ringX) * ease;
+            ringY += (mouseY - ringY) * ease;
 
-            if (trailer) {
-                trailer.style.transform = `translate3d(${trailerX}px, ${trailerY}px, 0)`;
+            if (ring) {
+                ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
             }
 
             requestAnimationFrame(animate);
@@ -40,29 +40,29 @@ const Cursor = () => {
         window.addEventListener('mousemove', onMouseMove);
         const animationId = requestAnimationFrame(animate);
 
-        // Add hover listeners to clickable elements
-        const handleMouseOver = () => trailer?.classList.add('hovering');
-        const handleMouseOut = () => trailer?.classList.remove('hovering');
+        // Hover Effects
+        const handleMouseEnter = () => {
+            ring?.classList.add('hovering');
+            dot?.classList.add('hovering');
+        };
+        const handleMouseLeave = () => {
+            ring?.classList.remove('hovering');
+            dot?.classList.remove('hovering');
+        };
 
-        const clickables = document.querySelectorAll('a, button, .clickable, .tool-card');
-        clickables.forEach(el => {
-            el.addEventListener('mouseenter', handleMouseOver);
-            el.addEventListener('mouseleave', handleMouseOut);
-        });
-
-        // Dynamic observer for new elements (like falling skills)
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                if (mutation.addedNodes.length) {
-                    const newClickables = document.querySelectorAll('a, button, .clickable, .tool-card');
-                    newClickables.forEach(el => {
-                        el.removeEventListener('mouseenter', handleMouseOver); // Prevent duplicates
-                        el.removeEventListener('mouseleave', handleMouseOut);
-                        el.addEventListener('mouseenter', handleMouseOver);
-                        el.addEventListener('mouseleave', handleMouseOut);
-                    });
-                }
+        const addListeners = () => {
+            const clickables = document.querySelectorAll('a, button, .clickable, .tab-btn, .tool-card');
+            clickables.forEach(el => {
+                el.addEventListener('mouseenter', handleMouseEnter);
+                el.addEventListener('mouseleave', handleMouseLeave);
             });
+        };
+
+        addListeners();
+
+        // Mutation observer to handle new elements (like switching tabs in Skills)
+        const observer = new MutationObserver(() => {
+            addListeners();
         });
         observer.observe(document.body, { childList: true, subtree: true });
 
@@ -70,17 +70,18 @@ const Cursor = () => {
             window.removeEventListener('mousemove', onMouseMove);
             cancelAnimationFrame(animationId);
             observer.disconnect();
+            const clickables = document.querySelectorAll('a, button, .clickable, .tab-btn, .tool-card');
             clickables.forEach(el => {
-                el.removeEventListener('mouseenter', handleMouseOver);
-                el.removeEventListener('mouseleave', handleMouseOut);
+                el.removeEventListener('mouseenter', handleMouseEnter);
+                el.removeEventListener('mouseleave', handleMouseLeave);
             });
         };
     }, []);
 
     return (
         <>
-            <div ref={cursorRef} className="cursor-dot" />
-            <div ref={trailerRef} className="cursor-trailer" />
+            <div ref={ringRef} className="cursor-ring" />
+            <div ref={dotRef} className="cursor-dot" />
         </>
     );
 };

@@ -1,58 +1,62 @@
 .cursor-dot,
-.cursor-trailer {
+.cursor-ring {
     position: fixed;
     top: 0;
     left: 0;
-    transform: translate3d(-100px, -100px, 0);
-    /* Hide initially */
     pointer-events: none;
-    z-index: 9999;
-    border-radius: 50%;
+    z-index: 10000;
     mix-blend-mode: difference;
+    border-radius: 50%;
+    transform: translate(-100px, -100px);
+    /* Hide initially */
 }
 
+/* The solid inner dot */
 .cursor-dot {
     width: 8px;
     height: 8px;
     background-color: white;
     margin-left: -4px;
-    /* Center */
     margin-top: -4px;
+    transition: transform 0s;
+    /* No lag for the dot */
 }
 
-.cursor-trailer {
+/* The outer ring */
+.cursor-ring {
     width: 40px;
     height: 40px;
     border: 1px solid white;
     margin-left: -20px;
-    /* Center */
     margin-top: -20px;
-    transition: width 0.3s, height 0.3s, background-color 0.3s;
     background-color: transparent;
+    transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s;
 }
 
-.cursor-trailer.hovering {
-    width: 60px;
-    height: 60px;
-    background-color: rgba(255, 255, 255, 0.1);
-    margin-left: -30px;
-    margin-top: -30px;
-    backdrop-filter: blur(2px);
+/* Hover State */
+.cursor-ring.hovering {
+    width: 64px;
+    height: 64px;
+    margin-left: -32px;
+    margin-top: -32px;
+    background-color: rgba(255, 255, 255, 0.2);
     border-color: transparent;
+    backdrop-filter: blur(2px);
 }
 
 /* Hide default cursor globally */
 body,
 a,
-button {
+button,
+.clickable {
     cursor: none !important;
 }
 
-/* Ensure mobile doesn't have custom cursor issues */
+/* Mobile check */
 @media (hover: none) and (pointer: coarse) {
 
     .cursor-dot,
-    .cursor-trailer {
+    .cursor-ring {
         display: none;
     }
 
