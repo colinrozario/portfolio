@@ -80,8 +80,12 @@ const Cursor = () => {
 
     return (
         <>
-            <div ref={ringRef} className="cursor-ring" />
-            <div ref={dotRef} className="cursor-dot" />
+            <div ref={ringRef} className="cursor-ring-wrapper">
+                <div className="cursor-ring-inner" />
+            </div>
+            <div ref={dotRef} className="cursor-dot-wrapper">
+                <div className="cursor-dot-inner" />
+            </div>
         </>
     );
 };
