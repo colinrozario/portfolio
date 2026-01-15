@@ -1,0 +1,200 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    mix-blend-mode: normal;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    z-index: 102;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.logo.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Resume Button */
+.resume-btn {
+    font-size: 1rem;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+    border: 1px solid var(--accent-green);
+    padding: 0.5rem 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 102;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.resume-btn:hover {
+    background: var(--accent-green);
+    color: black;
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.menu-btn {
+    z-index: 105;
+    /* Higher z-index for visibility */
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.hamburger {
+    width: 40px;
+    height: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.hamburger.open span:first-child {
+    transform: translateY(9px) rotate(45deg);
+    background-color: black;
+    /* Dark against green bg? Or white if we want high contrast? Let's use Black for the initial style */
+}
+
+.hamburger.open span:last-child {
+    transform: translateY(-9px) rotate(-45deg);
+    background-color: black;
+}
+
+/* Force White Close Icon if user preferred visibility over style? 
+   "X icon to close the menu section must be visible" 
+   Black on Neon Green is visible. White on Neon Green is also visible. 
+   Let's stick to Black (initial style) but if user complains we switch.
+   Wait, user specifically said "X icon... must be visible" in previous turn.
+   I will use Black as it contrasts best with Neon Green.
+*/
+
+/* Improved Nav Overlay - Reverted to Initial (Slant) */
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+    z-index: 101;
+    overflow: hidden;
+    background: transparent;
+    /* Background handles by accent div */
+}
+
+.nav-overlay.open {
+    transform: translateY(0);
+}
+
+/* Diagonal Background Effect (Restored) */
+.nav-bg-accent {
+    display: block;
+    /* Restored */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 100%;
+    background: var(--accent-green);
+    /* Neon Green */
+    transform: skewX(-10deg) translateX(-100%);
+    transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1) 0.1s;
+    z-index: -1;
+}
+
+.nav-overlay.open .nav-bg-accent {
+    transform: skewX(-10deg) translateX(-15%);
+}
+
+.nav-overlay::before,
+.nav-overlay::after {
+    display: none;
+    /* Remove orbs */
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    z-index: 102;
+    text-align: center;
+}
+
+.nav-links a {
+    font-size: 3.5rem;
+    color: rgba(0, 0, 0, 0.8);
+    /* Dark text on green bg */
+    transition: all 0.3s;
+    position: relative;
+    text-transform: uppercase;
+    -webkit-text-stroke: 1px black;
+    color: transparent;
+    font-weight: 900;
+    letter-spacing: normal;
+    line-height: normal;
+}
+
+.nav-links a:hover {
+    color: black;
+    transform: translateX(20px);
+    text-shadow: none;
+}
+
+.nav-links a:hover .nav-num {
+    color: black;
+    transform: none;
+}
+
+.nav-num {
+    font-size: 1rem;
+    color: black;
+    margin-right: 1.5rem;
+    font-family: var(--font-body);
+    vertical-align: middle;
+    font-weight: 400;
+    opacity: 0.6;
+    position: static;
+}
+
+@media (max-width: 768px) {
+    .nav-links a {
+        font-size: 2.5rem;
+    }
+}

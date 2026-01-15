@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+
+:root {
+  /* Colors */
+  --bg-primary: #212121;
+  --bg-secondary: #2A2A2A;
+  /* Slightly lighter for cards/menus */
+  --accent-green: #00F050;
+  --accent-glow: rgba(0, 240, 80, 0.4);
+  --text-primary: #DEDEDE;
+  --text-secondary: #A0A0A0;
+  --text-dim: #555555;
+
+  /* Layout */
+  --container-width: 1200px;
+  --header-height: 80px;
+
+  /* Fonts */
+  --font-display: 'Anton', sans-serif;
+  --font-body: 'Roboto Flex', sans-serif;
+
+  /* Effects */
+  --viewport-border: 10px;
+  --transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  border: var(--viewport-border) solid var(--bg-primary);
+  min-height: 100vh;
+}
+
+/* Viewport Border Effect (Blue Glow simulated via box-shadow on pseudo-element or container) */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  box-shadow: inset 0 0 20px rgba(0, 100, 255, 0.1);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Typography Utilities */
+.font-display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.text-accent {
+  color: var(--accent-green);
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px var(--text-dim);
+  color: transparent;
+  transition: all var(--transition);
+}
+
+.text-outline:hover {
+  -webkit-text-stroke: 1px var(--text-primary);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-green);
+}

@@ -1,0 +1,84 @@
+.stack-section {
+    padding: 10rem 0;
+    background: var(--bg-primary);
+}
+
+.stack-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    margin-bottom: 8rem;
+    align-items: center;
+}
+
+.stack-row:last-child {
+    margin-bottom: 0;
+}
+
+.stack-title {
+    font-size: 8rem;
+    line-height: 0.8;
+    margin-bottom: 1rem;
+}
+
+.stack-desc {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--accent-green);
+}
+
+.stack-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.tool-card {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+}
+
+.tool-card:hover {
+    background: #333;
+    transform: translateY(-5px);
+    border-color: var(--accent-green);
+}
+
+.tool-icon {
+    font-size: 3rem;
+    color: var(--text-primary);
+}
+
+.tool-card:hover .tool-icon {
+    color: var(--accent-green);
+}
+
+.tool-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 968px) {
+    .stack-row {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .stack-title {
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .stack-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

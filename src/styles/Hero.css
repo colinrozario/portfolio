@@ -1,0 +1,118 @@
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: var(--header-height);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4rem;
+    align-items: center;
+}
+
+.greeting {
+    font-size: 1.5rem;
+    letter-spacing: 4px;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.title {
+    font-size: 6rem;
+    /* Huge font size */
+    line-height: 0.9;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.title-outline {
+    -webkit-text-stroke: 1px white;
+    color: transparent;
+    opacity: 0.5;
+}
+
+.description {
+    max-width: 650px;
+    color: #e0e0e0;
+    /* Brighter/Crisper white for readability */
+    font-size: 1.25rem;
+    /* Slightly larger */
+    margin-bottom: 3rem;
+    line-height: 1.7;
+    text-align: left;
+    /* Usually left aligned is cleaner for reading than justify */
+    font-weight: 300;
+    /* Cleaner weight */
+    letter-spacing: 0.5px;
+}
+
+.hire-btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: var(--accent-green);
+    color: black;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%);
+}
+
+.hire-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px var(--accent-glow);
+}
+
+.hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    border-left: 1px solid #333;
+    padding-left: 3rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-num {
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+}
+
+@media (max-width: 968px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-stats {
+        flex-direction: row;
+        border-left: none;
+        border-top: 1px solid #333;
+        padding-left: 0;
+        padding-top: 2rem;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 3.5rem;
+    }
+
+    .hero-stats {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+}
