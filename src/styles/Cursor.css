@@ -1,45 +1,15 @@
 /* Main cursor container */
-.custom-cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    border: 2px solid white;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 10000;
-    mix-blend-mode: difference;
-    /* Ensures visibility on light/dark backgrounds */
-    transform: translate(-50%, -50%);
-    transition: width 0.3s, height 0.3s, background-color 0.3s;
+.custom-cursor,
+.myriad-cursor,
+.cursor-ring {
+    display: none;
+    /* Hide any custom cursor */
 }
 
-/* Hover State */
-.custom-cursor.hovering {
-    width: 50px;
-    height: 50px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: white;
-}
-
-/* Hide default cursor globally */
+/* Ensure default cursor is visible */
 body,
 a,
 button,
 .clickable {
-    cursor: none !important;
-}
-
-/* Mobile check */
-@media (hover: none) and (pointer: coarse) {
-    .custom-cursor {
-        display: none;
-    }
-
-    body,
-    a,
-    button {
-        cursor: auto !important;
-    }
+    cursor: auto !important;
 }

@@ -7,16 +7,16 @@ const About = () => {
             <div className="container">
                 <div className="about-grid">
                     <div className="about-header">
-                        <h2 className="font-display">this is me :)</h2>
+                        <h2 className="font-display">THIS IS <span className="text-outline">ME</span></h2>
                     </div>
                     <div className="about-content">
                         <h3 className="about-quote font-body">
-                            I believe in a data-driven approach, ensuring that every model I build is tailored to solve real-world problems.
+                            I build data-driven systems and make sure they work outside the notebook.
                         </h3>
                         <p className="about-text font-body">
-                            Hi! I'm Colin. A creative Aspiring AI/ML Engineer with a passion for building intelligent systems.
-                            I specialize in creating seamless and intuitive user experiences powered by data.
-                            My approach focuses on creating scalable, high-performing solutions tailored to both user needs and business objectives.
+                            Hey there, I'm Colin! Nice to meet you 👋 <br />
+                            I build systems that learn from data, break in unexpected ways, and get fixed before shipping.
+                            I enjoy turning messy datasets into scalable, high-performance products people actually like using.
                         </p>
                     </div>
                 </div>

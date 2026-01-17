@@ -3,12 +3,24 @@ import {
     SiPython, SiTensorflow, SiPytorch, SiScikitlearn,
     SiReact, SiDocker, SiAwslambda, SiPostgresql,
     SiJavascript, SiTypescript, SiHtml5, SiCss3,
-    SiNodedotjs, SiGit, SiMongodb, SiFastapi, SiRedux, SiTailwindcss, SiSass, SiBootstrap, SiNextdotjs, SiNestjs
+    SiNodedotjs, SiGit, SiMongodb, SiFastapi, SiRedux, SiTailwindcss, SiSass, SiBootstrap, SiNextdotjs, SiNestjs,
+    SiNumpy, SiPandas, SiKeras, SiOpencv, SiSpacy, SiRoboflow,
+    SiC, SiCplusplus
 } from 'react-icons/si';
+import { FaJava } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import '../styles/Stack.css';
 
 const stackData = [
+    {
+        category: "LANGUAGES",
+        tools: [
+            { name: 'C', icon: <SiC />, color: '#A8B9CC' },
+            { name: 'C++', icon: <SiCplusplus />, color: '#00599C' },
+            { name: 'Java', icon: <FaJava />, color: '#007396' },
+            { name: 'Python', icon: <SiPython />, color: '#3776AB' },
+        ]
+    },
     {
         category: "FRONTEND",
         tools: [
@@ -16,9 +28,7 @@ const stackData = [
             { name: 'TypeScript', icon: <SiTypescript />, color: '#3178C6' },
             { name: 'React', icon: <SiReact />, color: '#61DAFB' },
             { name: 'Next.js', icon: <SiNextdotjs />, color: '#ffffff' },
-            { name: 'Redux', icon: <SiRedux />, color: '#764ABC' },
             { name: 'Tailwind CSS', icon: <SiTailwindcss />, color: '#06B6D4' },
-            { name: 'Sass', icon: <SiSass />, color: '#CC6699' },
             { name: 'Bootstrap', icon: <SiBootstrap />, color: '#7952B3' },
         ]
     },
@@ -26,8 +36,7 @@ const stackData = [
         category: "BACKEND",
         tools: [
             { name: 'Node.js', icon: <SiNodedotjs />, color: '#339933' },
-            { name: 'NestJS', icon: <SiNestjs />, color: '#E0234E' }, // Added NestJS as per reference if available, or just generic
-            { name: 'Python', icon: <SiPython />, color: '#3776AB' },
+            { name: 'NestJS', icon: <SiNestjs />, color: '#E0234E' },
             { name: 'FastAPI', icon: <SiFastapi />, color: '#009688' },
             { name: 'PostgreSQL', icon: <SiPostgresql />, color: '#4169E1' },
             { name: 'MongoDB', icon: <SiMongodb />, color: '#47A248' },
@@ -39,6 +48,13 @@ const stackData = [
             { name: 'TensorFlow', icon: <SiTensorflow />, color: '#FF6F00' },
             { name: 'PyTorch', icon: <SiPytorch />, color: '#EE4C2C' },
             { name: 'Scikit-Learn', icon: <SiScikitlearn />, color: '#F7931E' },
+            { name: 'NumPy', icon: <SiNumpy />, color: '#013243' },
+            { name: 'Pandas', icon: <SiPandas />, color: '#150458' },
+            { name: 'Keras', icon: <SiKeras />, color: '#D00000' },
+            { name: 'XGBoost', icon: <SiPython />, color: '#15BDB9' }, // Fallback to Python icon as XGBoost has no simple icon
+            { name: 'OpenCV', icon: <SiOpencv />, color: '#5C3EE8' },
+            { name: 'Roboflow', icon: <SiRoboflow />, color: '#6600FF' },
+            { name: 'spaCY', icon: <SiSpacy />, color: '#09A3D5' },
         ]
     }
 ];

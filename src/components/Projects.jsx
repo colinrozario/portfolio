@@ -34,7 +34,7 @@ const Projects = () => {
     return (
         <section id="projects" className="projects-section">
             <div className="container">
-                <h2 className="section-header font-display">SELECTED WORKS</h2>
+                <h2 className="section-header font-display">SELECTED <span className="text-outline">WORKS</span></h2>
 
                 <div className="project-list">
                     {projects.map((project) => (

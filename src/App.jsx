@@ -6,8 +6,8 @@ import Stack from './components/Stack'; // Renamed from About
 import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 import ParticlesBackground from './components/ParticlesBackground';
-import Cursor from './components/Cursor';
 import Preloader from './components/Preloader';
 
 
@@ -19,7 +19,6 @@ function App() {
       {loading && <Preloader onComplete={() => setLoading(false)} />}
       {!loading && (
         <>
-          <Cursor />
           <ParticlesBackground />
           <Header />
           <main>
@@ -29,6 +28,7 @@ function App() {
             <Experience />
             <Projects />
             <Contact />
+            <Footer />
           </main>
         </>
       )}

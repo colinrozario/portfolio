@@ -1,46 +1,31 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import '../styles/Cursor.css';
 
 const Cursor = () => {
-    const cursorRef = useRef(null);
+    const [cursorVariant, setCursorVariant] = useState('default');
+
+    const mouseX = useMotionValue(-100);
+    const mouseY = useMotionValue(-100);
+
+    // Smooth spring physics for the follower effect
+    const springConfig = { damping: 20, stiffness: 150, mass: 0.5 };
+    const cursorX = useSpring(mouseX, springConfig);
+    const cursorY = useSpring(mouseY, springConfig);
 
     useEffect(() => {
-        const cursor = cursorRef.current;
-        let mouseX = -100;
-        let mouseY = -100;
-        let cursorX = -100;
-        let cursorY = -100;
-
-        const onMouseMove = (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
+        const moveCursor = (e) => {
+            mouseX.set(e.clientX);
+            mouseY.set(e.clientY);
         };
 
-        const animate = () => {
-            const ease = 0.15; // Slightly faster for responsiveness
-            cursorX += (mouseX - cursorX) * ease;
-            cursorY += (mouseY - cursorY) * ease;
+        window.addEventListener('mousemove', moveCursor);
 
-            if (cursor) {
-                cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
-            }
-
-            requestAnimationFrame(animate);
-        };
-
-        window.addEventListener('mousemove', onMouseMove);
-        const animationId = requestAnimationFrame(animate);
-
-        // Hover Effects
-        const handleMouseEnter = () => {
-            cursor?.classList.add('hovering');
-        };
-        const handleMouseLeave = () => {
-            cursor?.classList.remove('hovering');
-        };
+        const handleMouseEnter = () => setCursorVariant('hover');
+        const handleMouseLeave = () => setCursorVariant('default');
 
         const addListeners = () => {
-            const clickables = document.querySelectorAll('a, button, .clickable, .tab-btn, .tool-card');
+            const clickables = document.querySelectorAll('a, button, .clickable, .social-icon, .profile-card, .timeline-content');
             clickables.forEach(el => {
                 el.addEventListener('mouseenter', handleMouseEnter);
                 el.addEventListener('mouseleave', handleMouseLeave);
@@ -49,16 +34,13 @@ const Cursor = () => {
 
         addListeners();
 
-        const observer = new MutationObserver(() => {
-            addListeners();
-        });
+        const observer = new MutationObserver(addListeners);
         observer.observe(document.body, { childList: true, subtree: true });
 
         return () => {
-            window.removeEventListener('mousemove', onMouseMove);
-            cancelAnimationFrame(animationId);
+            window.removeEventListener('mousemove', moveCursor);
             observer.disconnect();
-            const clickables = document.querySelectorAll('a, button, .clickable, .tab-btn, .tool-card');
+            const clickables = document.querySelectorAll('a, button, .clickable, .social-icon, .profile-card, .timeline-content');
             clickables.forEach(el => {
                 el.removeEventListener('mouseenter', handleMouseEnter);
                 el.removeEventListener('mouseleave', handleMouseLeave);
@@ -66,8 +48,44 @@ const Cursor = () => {
         };
     }, []);
 
+    const variants = {
+        default: {
+            width: 16,
+            height: 16,
+            // Triangle shape using clip-path pointing right
+            clipPath: 'polygon(0 0, 0 100%, 100% 50%)',
+            borderRadius: 0,
+            backgroundColor: '#ffffff',
+            x: -8,
+            y: -8,
+            rotate: 0,
+            mixBlendMode: 'difference'
+        },
+        hover: {
+            width: 60,
+            height: 60,
+            // Full circle
+            clipPath: 'circle(50% at 50% 50%)',
+            borderRadius: '50%',
+            backgroundColor: '#ffffff', // Solid white (will be difference moded)
+            x: -30,
+            y: -30,
+            rotate: 180, // Subtle rotation effect on expansion
+            mixBlendMode: 'difference'
+        }
+    };
+
     return (
-        <div ref={cursorRef} className="custom-cursor" />
+        <motion.div
+            className="myriad-cursor"
+            variants={variants}
+            animate={cursorVariant}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }} // Snap for shape change
+            style={{
+                translateX: cursorX, // Smooth follower movement
+                translateY: cursorY,
+            }}
+        />
     );
 };
 

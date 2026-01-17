@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
-import { SiDribbble, SiX, SiInstagram, SiGmail } from 'react-icons/si';
+import { SiGmail, SiLinkedin, SiGithub, SiKaggle } from 'react-icons/si';
 import profileImg from '../assets/profile-cartoon.png';
 import '../styles/ProfileCard.css';
 
 const ProfileCard = () => {
-    const cardRef = useRef(null);
+    const wrapperRef = useRef(null);
 
     // Mouse tilt effect
     const x = useMotionValue(0);
@@ -14,21 +14,19 @@ const ProfileCard = () => {
     const mouseXSpring = useSpring(x);
     const mouseYSpring = useSpring(y);
 
-    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
-    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
+    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
+    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
 
     const handleMouseMove = (e) => {
-        const rect = cardRef.current.getBoundingClientRect();
+        if (!wrapperRef.current) return;
 
+        const rect = wrapperRef.current.getBoundingClientRect();
         const width = rect.width;
         const height = rect.height;
-
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
-
         const xPct = mouseX / width - 0.5;
         const yPct = mouseY / height - 0.5;
-
         x.set(xPct);
         y.set(yPct);
     };
@@ -38,56 +36,105 @@ const ProfileCard = () => {
         y.set(0);
     };
 
+    // Shuffle Variants
+    const containerVariants = {
+        rest: {},
+        hover: {}
+    };
+
+    const ghostCard1 = {
+        rest: {
+            rotate: -5,
+            x: 0,
+            y: 0,
+            scale: 0.95,
+            opacity: 0
+        },
+        hover: {
+            rotate: -12,
+            x: -40,
+            y: 10,
+            scale: 0.95,
+            opacity: 0.6,
+            transition: {
+                duration: 0.4,
+                type: 'spring',
+                stiffness: 100
+            }
+        }
+    };
+
+    const ghostCard2 = {
+        rest: {
+            rotate: 5,
+            x: 0,
+            y: 0,
+            scale: 0.9,
+            opacity: 0
+        },
+        hover: {
+            rotate: 12,
+            x: 40,
+            y: 20,
+            scale: 0.9,
+            opacity: 0.4,
+            transition: {
+                duration: 0.4,
+                delay: 0.1,
+                type: 'spring',
+                stiffness: 100
+            }
+        }
+    };
+
     return (
-        <div className="profile-card-wrapper">
-            {/* Dogtag Chain SVG Overlay */}
+        <motion.div
+            ref={wrapperRef}
+            className="profile-card-wrapper"
+            variants={containerVariants}
+            initial="rest"
+            whileHover="hover"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+        >
+            {/* Dogtag Chain Overlay positioned relative to wrapper */}
             <svg className="chain-overlay" viewBox="0 0 300 600">
-                {/* 
-                  Path simulating the chain:
-                  Starts from top center (hanging point)
-                  Loops down through the "hole" in the card
-                  Then goes behind the picture (simulated by layering)
-                  Then comes out and hangs a bit
-                */}
                 <motion.path
-                    d="M 80 0 Q 80 50 60 80 T 46 130" // Top string entering the hole
+                    d="M 150 0 L 150 100" // Simple string hanging down to card center-ish
                     className="chain-path"
-                    style={{
-                        pathLength: 1,
-                        pathOffset: 0,
-                    }}
-                />
-                <motion.path
-                    d="M 46 130 C 46 250 250 250 250 130" // Loop roughly behind/around card - simplified for visual flair
-                    className="chain-path"
-                    style={{ opacity: 0.3 }} // Faint line behind
                 />
             </svg>
 
+            {/* Ghost Cards (Background) */}
+            <motion.div className="ghost-card ghost-1" variants={ghostCard1}>
+                <div className="card-hole"></div>
+                <div className="profile-img-container"></div>
+                <div className="ghost-lines">
+                    <div className="ghost-line title"></div>
+                    <div className="ghost-line text"></div>
+                    <div className="ghost-line text"></div>
+                </div>
+            </motion.div>
+            <motion.div className="ghost-card ghost-2" variants={ghostCard2}>
+                <div className="card-hole"></div>
+                <div className="profile-img-container"></div>
+                <div className="ghost-lines">
+                    <div className="ghost-line title"></div>
+                    <div className="ghost-line text"></div>
+                    <div className="ghost-line text"></div>
+                </div>
+            </motion.div>
+
+            {/* Main Card */}
             <motion.div
-                ref={cardRef}
                 className="profile-card"
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
                 style={{
                     rotateX,
                     rotateY,
                     transformStyle: "preserve-3d",
                 }}
-                animate={{
-                    y: [0, -10, 0], // Floating Effect
-                }}
-                transition={{
-                    y: {
-                        duration: 4,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        ease: "easeInOut"
-                    }
-                }}
             >
-                {/* Hole punch */}
-                <div className="card-hole" style={{ top: '25px', left: '40px' }}></div>
+                <div className="card-hole"></div>
 
                 <div className="profile-img-container">
                     <img src={profileImg} alt="Colin Rozario" className="profile-img" />
@@ -100,14 +147,14 @@ const ProfileCard = () => {
                     </p>
 
                     <div className="profile-socials">
-                        <a href="#" className="social-icon"><SiDribbble /></a>
-                        <a href="#" className="social-icon"><SiX /></a>
-                        <a href="#" className="social-icon"><SiInstagram /></a>
-                        <a href="mailto:colin@example.com" className="social-icon"><SiGmail /></a>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=colinmichaeldrozario1@gmail.com" target="_blank" rel="noreferrer" className="social-icon gmail" title="Gmail"><SiGmail /></a>
+                        <a href="https://linkedin.com/in/colin-michael-d-rozario-b03258196/" target="_blank" rel="noreferrer" className="social-icon linkedin" title="LinkedIn"><SiLinkedin /></a>
+                        <a href="https://github.com/colinrozario" target="_blank" rel="noreferrer" className="social-icon github" title="GitHub"><SiGithub /></a>
+                        <a href="https://www.kaggle.com/colinmichaeldrozario" target="_blank" rel="noreferrer" className="social-icon kaggle" title="Kaggle"><SiKaggle /></a>
                     </div>
                 </div>
             </motion.div>
-        </div>
+        </motion.div>
     );
 };
 

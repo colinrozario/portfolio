@@ -7,6 +7,11 @@
     font-size: 4rem;
     margin-bottom: 5rem;
     color: var(--text-primary);
+    cursor: default;
+}
+
+.section-header:hover .text-outline {
+    color: var(--accent-green);
 }
 
 .project-list {

@@ -18,6 +18,11 @@
     font-size: 4rem;
     color: var(--text-primary);
     line-height: 1;
+    cursor: default;
+}
+
+.about-header h2:hover .text-outline {
+    color: var(--accent-green);
 }
 
 .about-content {
@@ -27,6 +32,7 @@
 }
 
 .about-quote {
+    font-family: 'Outfit', sans-serif;
     font-size: 1.5rem;
     color: var(--text-primary);
     border-left: 2px solid var(--accent-green);
@@ -35,6 +41,7 @@
 }
 
 .about-text {
+    font-family: 'Outfit', sans-serif;
     font-size: 1.1rem;
     color: var(--text-secondary);
     line-height: 1.6;

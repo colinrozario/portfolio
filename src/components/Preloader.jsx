@@ -17,7 +17,7 @@ const Preloader = ({ onComplete }) => {
 
     return (
         <div className={`preloader ${animateOut ? 'fade-out' : ''}`}>
-            <h1 className="preloader-text">Colin Michael</h1>
+            <h1 className="preloader-text">Colin D'Rozario</h1>
         </div>
     );
 };
