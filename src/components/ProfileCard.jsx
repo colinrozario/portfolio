@@ -38,24 +38,46 @@ const ProfileCard = () => {
 
     // Shuffle Variants
     const containerVariants = {
-        rest: {},
+        rest: {
+            transition: {
+                staggerChildren: 0.1
+            }
+        },
         hover: {}
     };
 
     const ghostCard1 = {
+        intro: {
+            y: -500,
+            opacity: 0,
+            rotate: 0,
+            x: 0,
+        },
         rest: {
             rotate: -5,
             x: 0,
             y: 0,
             scale: 0.95,
-            opacity: 0
+            opacity: 1, // Visible at rest
+            transition: {
+                type: 'spring',
+                stiffness: 50,
+                damping: 15,
+                delay: 0.5 // Wait for main card
+            }
+        },
+        // Dramatic shuffle effect before resting
+        shuffle: {
+            x: -120, // Fan out left
+            rotate: -20,
+            transition: { duration: 0.4, type: 'spring' }
         },
         hover: {
             rotate: -12,
             x: -40,
             y: 10,
             scale: 0.95,
-            opacity: 0.6,
+            opacity: 0.6, // Slight fade on hover
             transition: {
                 duration: 0.4,
                 type: 'spring',
@@ -65,12 +87,24 @@ const ProfileCard = () => {
     };
 
     const ghostCard2 = {
+        intro: {
+            y: -500,
+            opacity: 0,
+            rotate: 0,
+            x: 0,
+        },
         rest: {
             rotate: 5,
             x: 0,
             y: 0,
             scale: 0.9,
-            opacity: 0
+            opacity: 1,
+            transition: {
+                type: 'spring',
+                stiffness: 50,
+                damping: 15,
+                delay: 0.6 // Wait for main card
+            }
         },
         hover: {
             rotate: 12,
@@ -87,12 +121,32 @@ const ProfileCard = () => {
         }
     };
 
+    // Main card intro variant
+    const mainCardVariants = {
+        intro: {
+            y: -600,
+            opacity: 0,
+        },
+        rest: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                type: 'spring',
+                stiffness: 60,
+                damping: 12,
+                mass: 1.2
+            }
+        },
+        hover: {}
+    };
+
     return (
         <motion.div
             ref={wrapperRef}
             className="profile-card-wrapper"
             variants={containerVariants}
-            initial="rest"
+            initial="intro"
+            animate="rest"
             whileHover="hover"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -128,6 +182,7 @@ const ProfileCard = () => {
             {/* Main Card */}
             <motion.div
                 className="profile-card"
+                variants={mainCardVariants}
                 style={{
                     rotateX,
                     rotateY,

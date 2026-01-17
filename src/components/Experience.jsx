@@ -7,14 +7,14 @@ const Experience = () => {
         {
             id: 1,
             role: 'Software Engineer-INTERN',
-            company: 'ivPRO Technologies, Coimbatore',
+            company: 'ivPRO Technologies, Coimbatore,TN, India',
             period: 'December 2025 - Present',
             description: 'Built real-time AI surveillance systems for CCTV/NVR pipelines using YOLO and RTSP.\nFocused on improving detection accuracy, reducing false alerts, and deploying scalable inference APIs.'
         },
         {
             id: 2,
             role: 'AI/ML- INTERN',
-            company: 'SolutionChamps Technologies, Coimbatore',
+            company: 'SolutionChamps Technologies, Coimbatore,TN, India',
             period: 'April 2025 - June 2025',
             description: "Worked end-to-end on computer vision and NLP systems for wildlife, fire, and threat detection.\nBuilt robust data pipelines, fine-tuned models, and deployed real-time AI solutions."
         }

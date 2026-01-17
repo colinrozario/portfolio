@@ -51,7 +51,7 @@ const Contact = () => {
                 <div className="contact-left">
                     <h2 className="section-header font-display">LET'S WORK <br /><span className="text-accent">TOGETHER</span></h2>
                     <p className="contact-desc">
-                        Have a project in mind? I'm always open to discussing new opportunities in AI, Machine Learning, and Web Development.
+                        Have a project in mind or just want to say Hi? I'm always open to discussing new opportunities in AI, Machine Learning, and Web Development.
                     </p>
                     <div className="social-links">
                         <a href="https://github.com/colinrozario" className="social-icon" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
