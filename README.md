@@ -1,47 +1,17 @@
-# Colin's Portfolio
+# Hi, I'm Colin! 👋
 
-A modern, interactive portfolio website built with React and Vite, featuring physics-based animations and a custom design system.
+Welcome to my digital playground. This portfolio is a collection of my work, thoughts, and experiments in building interactive web experiences. It's designed not just to show *what* I can do, but *how* I think about user interface and design.
 
-## 🚀 Features
+### [🌐 Visit the Live Site](https://colinrozario-portfolio.vercel.app/)
 
--   **Falling Skills Section**: An interactive physics playground powered by `matter-js` where skill icons fall, collide, and can be thrown around.
--   **Custom Cursor**: A "top-notch" follower cursor with dynamic hover effects and trail animation.
--   **Particle Background**: interactive background particles using `tsparticles`.
--   **Responsive Design**: Fully responsive layout for all devices.
--   **Modern UI/UX**: Glassmorphism, neon accents, and smooth transitions.
+### What's Inside?
+Instead of a static list of projects, I wanted to build something that feels alive.
+- **Interactive Physics**: Toss the skill icons around in the "Skills" section—it's surprisingly therapeutic!
+- **Dynamic Projects**: A curated value-first look at what I've been building.
+- **Smooth Experience**: Optimized for performance and fluidity.
 
-## 🛠️ Tech Stack
+### Built With
+Crafted with **React** and **Vite**, focusing on performance and custom interactions.
 
--   **Frontend Framework**: React 18+ (Vite)
--   **Physics Engine**: Matter.js
--   **Styling**: CSS Modules / Vanilla CSS Variables
--   **Icons**: React Icons
--   **Particles**: tsparticles
-
-## 🏃‍♂️ Getting Started
-
-1.  **Clone the repository**
-    ```bash
-    git clone <repository-url>
-    ```
-
-2.  **Install dependencies**
-    ```bash
-    npm install
-    # or
-    yarn install
-    ```
-
-3.  **Run the development server**
-    ```bash
-    npm run dev
-    ```
-
-4.  **Build for production**
-    ```bash
-    npm run build
-    ```
-
-## 🎨 Design Notes
-
-The design uses a dark theme with high-contrast neon green accents (`#00F050`) and subtle component interactions to create an engaging user experience.
+---
+*Feel free to explore, and if you see something you like, let's connect!*
