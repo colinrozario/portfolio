@@ -16,7 +16,8 @@ const Projects = () => {
             tech: 'FastAPI • React • PyTorch • InsightFace • LangChain',
             description: 'Developed a real-time wearable AI assistant combining face recognition and speech transcription for live identity recall. Integrated LangChain and vector search to generate conversation summaries, reminders, and emergency SOS alerts. Engineered a web dashboard that consolidates detection data and conversation logs.',
             githubLink: 'https://github.com/colinrozario/mindtrace',
-            color: 'linear-gradient(135deg, #FF6B6B 0%, #556270 100%)' // Fallback color
+            color: 'linear-gradient(135deg, #FF6B6B 0%, #556270 100%)', // Fallback color
+            image: '/projects/mindtrace.png'
         },
         {
             id: '02',
@@ -35,7 +36,8 @@ const Projects = () => {
             tech: 'React • Node.js • AWS',
             description: 'Architected a scalable digital platform fostering collaborative innovation. Implemented secure authentication, real-time data synchronization, and a responsive UI for seamless user engagement.',
             githubLink: 'https://github.com/colinrozario/divergeX',
-            color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+            color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            image: '/projects/divergex.png'
         },
         {
             id: '04',
