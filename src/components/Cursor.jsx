@@ -3,15 +3,19 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 import '../styles/Cursor.css';
 
 const Cursor = () => {
-    const [cursorVariant, setCursorVariant] = useState('default');
+    const [isHovered, setIsHovered] = useState(false);
+    const [isClicked, setIsClicked] = useState(false);
 
+    // Mouse position state
     const mouseX = useMotionValue(-100);
     const mouseY = useMotionValue(-100);
 
-    // Smooth spring physics for the follower effect
-    const springConfig = { damping: 20, stiffness: 150, mass: 0.5 };
-    const cursorX = useSpring(mouseX, springConfig);
-    const cursorY = useSpring(mouseY, springConfig);
+    // Spring physics for the trailing ring
+    // Stiffness: tension (higher = snappier)
+    // Damping: friction (higher = less oscillation)
+    const springConfig = { damping: 25, stiffness: 120, mass: 0.8 };
+    const springX = useSpring(mouseX, springConfig);
+    const springY = useSpring(mouseY, springConfig);
 
     useEffect(() => {
         const moveCursor = (e) => {
@@ -19,73 +23,114 @@ const Cursor = () => {
             mouseY.set(e.clientY);
         };
 
+        const handleMouseDown = () => setIsClicked(true);
+        const handleMouseUp = () => setIsClicked(false);
+
+        const handleMouseEnter = () => setIsHovered(true);
+        const handleMouseLeave = () => setIsHovered(false);
+
+        // Track mouse movement
         window.addEventListener('mousemove', moveCursor);
+        window.addEventListener('mousedown', handleMouseDown);
+        window.addEventListener('mouseup', handleMouseUp);
 
-        const handleMouseEnter = () => setCursorVariant('hover');
-        const handleMouseLeave = () => setCursorVariant('default');
+        // Attach hover listeners to interactive elements dynamically
+        const addHoverListeners = () => {
+            const interactiveElements = document.querySelectorAll(
+                'a, button, input, textarea, select, .clickable, .social-icon, .card, .project-item'
+            );
 
-        const addListeners = () => {
-            const clickables = document.querySelectorAll('a, button, .clickable, .social-icon, .profile-card, .timeline-content');
-            clickables.forEach(el => {
+            interactiveElements.forEach((el) => {
                 el.addEventListener('mouseenter', handleMouseEnter);
                 el.addEventListener('mouseleave', handleMouseLeave);
             });
+
+            return () => {
+                interactiveElements.forEach((el) => {
+                    el.removeEventListener('mouseenter', handleMouseEnter);
+                    el.removeEventListener('mouseleave', handleMouseLeave);
+                });
+            };
         };
 
-        addListeners();
+        // Initial attach
+        const cleanupListeners = addHoverListeners();
 
-        const observer = new MutationObserver(addListeners);
+        // Re-attach on DOM mutations (e.g., route changes or dynamic content)
+        const observer = new MutationObserver(addHoverListeners);
         observer.observe(document.body, { childList: true, subtree: true });
 
         return () => {
             window.removeEventListener('mousemove', moveCursor);
+            window.removeEventListener('mousedown', handleMouseDown);
+            window.removeEventListener('mouseup', handleMouseUp);
+            cleanupListeners();
             observer.disconnect();
-            const clickables = document.querySelectorAll('a, button, .clickable, .social-icon, .profile-card, .timeline-content');
-            clickables.forEach(el => {
-                el.removeEventListener('mouseenter', handleMouseEnter);
-                el.removeEventListener('mouseleave', handleMouseLeave);
-            });
         };
-    }, []);
+    }, [mouseX, mouseY]);
 
-    const variants = {
+    // Animation Variants for the Ring
+    const ringVariants = {
         default: {
-            width: 16,
-            height: 16,
-            // Triangle shape using clip-path pointing right
-            clipPath: 'polygon(0 0, 0 100%, 100% 50%)',
-            borderRadius: 0,
-            backgroundColor: '#ffffff',
-            x: -8,
-            y: -8,
-            rotate: 0,
-            mixBlendMode: 'difference'
+            height: 32,
+            width: 32,
+            x: -16, // Center offset (half of width)
+            y: -16,
+            backgroundColor: "transparent",
+            border: "1px solid white",
+            mixBlendMode: "difference"
         },
         hover: {
-            width: 60,
-            height: 60,
-            // Full circle
-            clipPath: 'circle(50% at 50% 50%)',
-            borderRadius: '50%',
-            backgroundColor: '#ffffff', // Solid white (will be difference moded)
-            x: -30,
-            y: -30,
-            rotate: 180, // Subtle rotation effect on expansion
-            mixBlendMode: 'difference'
+            height: 64,
+            width: 64,
+            x: -32,
+            y: -32,
+            backgroundColor: "white", // Fill the ring
+            border: "1px solid white",
+            mixBlendMode: "difference"
+        },
+        click: {
+            scale: 0.8,
+            transition: { duration: 0.1 }
+        }
+    };
+
+    // Animation Variants for the Dot
+    const dotVariants = {
+        default: {
+            x: -4, // Center offset (half of width 8px)
+            y: -4,
+        },
+        hover: {
+            scale: 0, // Hide dot when ring expands
         }
     };
 
     return (
-        <motion.div
-            className="myriad-cursor"
-            variants={variants}
-            animate={cursorVariant}
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }} // Snap for shape change
-            style={{
-                translateX: cursorX, // Smooth follower movement
-                translateY: cursorY,
-            }}
-        />
+        <>
+            {/* The Dot: Follows mouse perfectly */}
+            <motion.div
+                className="cursor-dot"
+                style={{
+                    translateX: mouseX,
+                    translateY: mouseY,
+                }}
+                variants={dotVariants}
+                animate={isHovered ? "hover" : "default"}
+            />
+
+            {/* The Ring: Follows with physics */}
+            <motion.div
+                className="cursor-ring"
+                style={{
+                    translateX: springX,
+                    translateY: springY,
+                }}
+                variants={ringVariants}
+                animate={isClicked ? "click" : isHovered ? "hover" : "default"}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            />
+        </>
     );
 };
 

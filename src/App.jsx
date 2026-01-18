@@ -11,6 +11,8 @@ import ParticlesBackground from './components/ParticlesBackground';
 import Preloader from './components/Preloader';
 
 
+import Cursor from './components/Cursor';
+
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -19,6 +21,7 @@ function App() {
       {loading && <Preloader onComplete={() => setLoading(false)} />}
       {!loading && (
         <>
+          <Cursor />
           <ParticlesBackground />
           <Header />
           <main>
