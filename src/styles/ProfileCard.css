@@ -137,28 +137,42 @@
 .social-icon {
     font-size: 1.5rem;
     color: #ff5722;
-    transition: transform 0.2s ease, color 0.2s ease;
+    /* Default fallback */
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.social-icon:hover {
-    transform: scale(1.2);
-}
-
-.social-icon.gmail:hover {
+/* Specific Brand Colors Default */
+.social-icon.gmail {
     color: #DB4437;
 }
 
-.social-icon.linkedin:hover {
+.social-icon.linkedin {
     color: #0077b5;
 }
 
-.social-icon.github:hover {
+.social-icon.github {
     color: #333;
 }
 
-.social-icon.kaggle:hover {
+.social-icon.kaggle {
     color: #20BEFF;
 }
+
+.social-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
 
 /* Chain Overlay - The "Dogtag" string */
 .chain-overlay {
@@ -198,8 +212,16 @@
 
 @media (max-width: 768px) {
     .profile-card-wrapper {
-        width: 280px;
-        height: 420px;
+        width: 100%;
+        max-width: 300px;
+        /* Ensure it fits on 320px screens with some margin */
+        height: auto;
+        min-height: 480px;
+    }
+
+    .profile-card {
+        height: auto;
+        min-height: 100%;
     }
 
     .profile-img-container {

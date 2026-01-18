@@ -17,7 +17,7 @@ const Projects = () => {
             description: 'Developed a real-time wearable AI assistant combining face recognition and speech transcription for live identity recall. Integrated LangChain and vector search to generate conversation summaries, reminders, and emergency SOS alerts. Engineered a web dashboard that consolidates detection data and conversation logs.',
             githubLink: 'https://github.com/colinrozario/mindtrace',
             color: 'linear-gradient(135deg, #FF6B6B 0%, #556270 100%)', // Fallback color
-            image: '/projects/mindtrace.png'
+            image: '/projects/mindtrace-2.png'
         },
         {
             id: '02',
@@ -107,6 +107,14 @@ const Projects = () => {
                                         </h3>
                                         <span className="tech-badge">{project.tech}</span>
                                     </div>
+
+                                    {/* Mobile Project Image - Visible only on small screens */}
+                                    {project.image && (
+                                        <div className="mobile-project-image">
+                                            <img src={project.image} alt={project.title} />
+                                        </div>
+                                    )}
+
                                     <p className="project-desc">{project.description}</p>
                                 </div>
                                 <motion.a

@@ -78,7 +78,6 @@ const Cursor = () => {
             y: -16,
             backgroundColor: "transparent",
             border: "1px solid white",
-            mixBlendMode: "difference"
         },
         hover: {
             height: 64,
@@ -87,7 +86,6 @@ const Cursor = () => {
             y: -32,
             backgroundColor: "white", // Fill the ring
             border: "1px solid white",
-            mixBlendMode: "difference"
         },
         click: {
             scale: 0.8,
