@@ -16,7 +16,7 @@ const Projects = () => {
             tech: 'FastAPI • React • PyTorch • InsightFace • LangChain',
             description: 'Developed a real-time wearable AI assistant combining face recognition and speech transcription for live identity recall. Integrated LangChain and vector search to generate conversation summaries, reminders, and emergency SOS alerts. Engineered a web dashboard that consolidates detection data and conversation logs.',
             githubLink: 'https://github.com/colinrozario/mindtrace',
-            color: 'linear-gradient(135deg, #FF6B6B 0%, #556270 100%)'
+            color: 'linear-gradient(135deg, #FF6B6B 0%, #556270 100%)' // Fallback color
         },
         {
             id: '02',
@@ -25,14 +25,15 @@ const Projects = () => {
             tech: 'FastAPI • PyTorch • FAISS • OpenCV • Next.js',
             description: 'Built an end-to-end logo similarity and trademark risk analysis system using deep visual embeddings and vector search. Implemented FAISS-based ANN retrieval, reducing logo comparison latency by ~70% while maintaining high accuracy. Enhanced a scalable FastAPI backend and Next.js dashboard.',
             githubLink: 'https://github.com/colinrozario/TruLogo',
-            color: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
+            color: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+            image: '/projects/trulogo.png'
         },
         {
             id: '03',
             title: 'divergeX',
             category: 'Full Stack / Innovation',
             tech: 'React • Node.js • AWS',
-            description: 'Architected a scalable digital platform fostering collaborative innovation and guidance for Neuro-divergent individuals. Implemented secure authentication, real-time data synchronization, and a responsive UI for seamless user engagement.',
+            description: 'Architected a scalable digital platform fostering collaborative innovation. Implemented secure authentication, real-time data synchronization, and a responsive UI for seamless user engagement.',
             githubLink: 'https://github.com/colinrozario/divergeX',
             color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
         },
@@ -43,7 +44,8 @@ const Projects = () => {
             tech: 'XGBoost • Scikit-learn • Pandas',
             description: 'Built a predictive machine learning model to identify at-risk subscribers. Analyzed viewing patterns and user behavior to engineer features that improved churn prediction accuracy by 15%.',
             githubLink: 'https://github.com/colinrozario/netflix_churn_prediction',
-            color: 'linear-gradient(135deg, #E50914 0%, #221f1f 100%)'
+            color: 'linear-gradient(135deg, #E50914 0%, #221f1f 100%)',
+            image: '/projects/netflix_churn_new.jpg'
         },
         {
             id: '05',
@@ -52,7 +54,8 @@ const Projects = () => {
             tech: 'Python • Streamlit • ML Algorithms',
             description: 'Designed a foundational classification model to predict Iris flower species. Demonstrates core competencies in data preprocessing, feature selection, and model evaluation metrics.',
             githubLink: 'https://github.com/colinrozario/iris_pred',
-            color: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
+            color: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+            image: '/projects/iris_pred.png'
         }
     ];
 
@@ -131,7 +134,7 @@ const Projects = () => {
                             animate={{
                                 opacity: 1,
                                 scale: 1,
-                                top: mousePosition.y - 120, // Adjusted offset
+                                top: mousePosition.y - 120,
                                 left: mousePosition.x + 80,
                             }}
                             exit={{ opacity: 0, scale: 0.8 }}
@@ -140,7 +143,24 @@ const Projects = () => {
                                 background: projects.find(p => p.id === hoveredProject)?.color
                             }}
                         >
-                            <div className="placeholder-text">View On GitHub</div>
+                            {/* Render Image if available, else text */}
+                            {(() => {
+                                const activeProj = projects.find(p => p.id === hoveredProject);
+                                if (activeProj?.image) {
+                                    return (
+                                        <img
+                                            src={activeProj.image}
+                                            alt={activeProj.title}
+                                            style={{
+                                                width: '100%',
+                                                height: '100%',
+                                                objectFit: 'cover'
+                                            }}
+                                        />
+                                    );
+                                }
+                                return <div className="placeholder-text">View On GitHub</div>;
+                            })()}
                         </motion.div>
                     )}
                 </AnimatePresence>
