@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/Header.css';
 
 const Header = () => {
@@ -19,7 +20,31 @@ const Header = () => {
         <header className="header">
             <div className="container header-content">
                 <a href="#" className={`logo font-display`}>
-                    {isScrolled ? 'CR' : 'COLIN ROZARIO'}
+                    <AnimatePresence mode="wait">
+                        {isScrolled ? (
+                            <motion.span
+                                key="short"
+                                initial={{ opacity: 0, width: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, width: 'auto', scale: 1 }}
+                                exit={{ opacity: 0, width: 0, scale: 0.8 }}
+                                transition={{ duration: 0.3 }}
+                                style={{ display: 'inline-block' }}
+                            >
+                                CR
+                            </motion.span>
+                        ) : (
+                            <motion.span
+                                key="full"
+                                initial={{ opacity: 0, width: 0 }}
+                                animate={{ opacity: 1, width: 'auto' }}
+                                exit={{ opacity: 0, width: 0 }}
+                                transition={{ duration: 0.3 }}
+                                style={{ display: 'inline-block', whiteSpace: 'nowrap' }}
+                            >
+                                COLIN ROZARIO
+                            </motion.span>
+                        )}
+                    </AnimatePresence>
                     <span className="text-accent">.</span>
                 </a>
 
