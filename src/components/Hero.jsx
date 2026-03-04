@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import ProfileCard from './ProfileCard';
 import '../styles/Hero.css';
 
@@ -8,6 +9,15 @@ const Hero = () => {
             <div className="container hero-container">
                 <div className="hero-grid">
                     <div className="hero-content">
+                        <motion.div
+                            className="availability-badge font-display"
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                        >
+                            <span className="pulse-dot"></span>
+                            Looking for opportunities
+                        </motion.div>
                         <h2 className="greeting font-display">HI! I'M COLIN</h2>
                         <h1 className="title font-display">
                             ASPIRING <br />

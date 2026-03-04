@@ -35,8 +35,7 @@
 .timeline::before {
     content: '';
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 20px;
     top: 0;
     bottom: 0;
     width: 2px;
@@ -50,7 +49,7 @@
     margin-bottom: 80px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     perspective: 1000px;
     /* Enable 3D perspective */
@@ -59,7 +58,7 @@
 /* Center Neon Dot */
 .timeline-dot {
     position: absolute;
-    left: 50%;
+    left: 20px;
     transform: translateX(-50%);
     width: 20px;
     height: 20px;
@@ -79,7 +78,8 @@
 
 /* Holographic Glass Card */
 .timeline-content {
-    width: 45%;
+    width: calc(100% - 60px);
+    margin-left: 60px;
     background: rgba(10, 10, 10, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -92,6 +92,21 @@
     z-index: 1;
     overflow: hidden;
     font-family: 'Outfit', sans-serif;
+}
+
+/* Arrow connecting dot to card */
+.timeline-content::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    z-index: 10;
+    left: -10px;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent rgba(255, 255, 255, 0.1) transparent transparent;
 }
 
 /* Glowing border effect on hover */
@@ -122,48 +137,6 @@
 .timeline-item:hover .timeline-content::before {
     opacity: 1;
     background: linear-gradient(45deg, transparent, var(--accent-green), transparent);
-}
-
-/* Arrow connecting dot to card */
-.timeline-content::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-style: solid;
-    z-index: 10;
-}
-
-/* Alternate sides positioning */
-.timeline-item:nth-child(odd) {
-    justify-content: flex-start;
-}
-
-.timeline-item:nth-child(even) {
-    justify-content: flex-end;
-}
-
-.timeline-item:nth-child(odd) .timeline-content {
-    margin-left: auto;
-    margin-right: 60px;
-}
-
-.timeline-item:nth-child(odd) .timeline-content::after {
-    right: -10px;
-    border-width: 10px 0 10px 10px;
-    border-color: transparent transparent transparent rgba(255, 255, 255, 0.1);
-}
-
-.timeline-item:nth-child(even) .timeline-content {
-    margin-left: 60px;
-}
-
-.timeline-item:nth-child(even) .timeline-content::after {
-    left: -10px;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent rgba(255, 255, 255, 0.1) transparent transparent;
 }
 
 
@@ -231,40 +204,25 @@
 @media (max-width: 768px) {
     .timeline::before {
         left: 30px;
-    }
-
-    .timeline-item {
-        justify-content: flex-start !important;
+        top: 30px;
     }
 
     .timeline-dot {
         left: 30px;
+        top: 30px;
+        transform: translate(-50%, -50%);
     }
 
     .timeline-content {
         width: calc(100% - 80px);
-        margin-left: 80px !important;
-        margin-right: 0 !important;
+        margin-left: 80px;
     }
 
     .timeline-content::after {
-        left: -10px !important;
-        top: 30px !important;
-        /* Move arrow up on mobile */
-        border-width: 10px 10px 10px 0 !important;
-        border-color: transparent rgba(255, 255, 255, 0.1) transparent transparent !important;
-    }
-
-    .timeline-dot {
+        left: -10px;
         top: 30px;
-        /* Align dot with top of card */
-        transform: translate(-50%, -50%);
-        /* Center on the line */
-    }
-
-    .timeline::before {
-        top: 30px;
-        /* Start line lower */
+        border-width: 10px 10px 10px 0;
+        border-color: transparent rgba(255, 255, 255, 0.1) transparent transparent;
     }
 
     .section-title {
