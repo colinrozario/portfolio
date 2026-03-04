@@ -11,12 +11,14 @@ const About = () => {
                     </div>
                     <div className="about-content">
                         <h3 className="about-quote font-body">
-                            I build data-driven systems and make sure they work outside the notebook.
+                            Building Today, Upgrading Tomorrow!
                         </h3>
                         <p className="about-text font-body">
-                            Hey there, I'm Colin! Nice to meet you 👋 <br />
-                            I build systems that learn from data, break in unexpected ways, and get fixed before shipping.
-                            I enjoy turning messy datasets into scalable, high-performance products people actually like using.
+                              
+
+                            I learn best by building — experimenting with ideas, breaking systems, and understanding how things work under the hood. Over time, that curiosity has shaped how I approach problems: with structured thinking, clean execution, and a focus on efficiency and scalability.  
+
+                            Most of my growth comes from self-driven projects, hackathons, and pushing beyond the classroom. I believe progress compounds, and I treat every project as another iteration toward becoming a stronger engineer — focused on creating systems that deliver real impact.
                         </p>
                     </div>
                 </div>

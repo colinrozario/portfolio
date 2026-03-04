@@ -20,10 +20,7 @@ const Footer = () => {
                 </div>
                 <div className="footer-bottom">
                     <p>© 2026 Colin Rozario. All rights reserved.</p>
-                    <div className="footer-links">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                    </div>
+
                 </div>
             </div>
         </footer>

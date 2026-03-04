@@ -18,8 +18,9 @@ const Header = () => {
     return (
         <header className="header">
             <div className="container header-content">
-                <a href="#" className={`logo font-display ${isScrolled ? 'hidden' : ''}`}>
-                    COLIN ROZARIO<span className="text-accent">.</span>
+                <a href="#" className={`logo font-display`}>
+                    {isScrolled ? 'CR' : 'COLIN ROZARIO'}
+                    <span className="text-accent">.</span>
                 </a>
 
                 <div className="header-controls">
