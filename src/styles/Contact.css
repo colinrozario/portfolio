@@ -31,14 +31,17 @@
 }
 
 .social-icon {
-    font-size: 2rem;
-    color: var(--text-primary);
-    transition: transform 0.3s, color 0.3s;
+    font-size: 2.5rem;
+    color: var(--accent-green);
+    transition: transform 0.3s, color 0.3s, filter 0.3s;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 127, 0.4));
 }
 
 .social-icon:hover {
-    color: var(--accent-green);
+    color: #ff3399;
+    /* Bright pink hover color */
     transform: translateY(-5px);
+    filter: drop-shadow(0 0 12px rgba(255, 51, 153, 0.6));
 }
 
 .contact-form {
