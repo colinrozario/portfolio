@@ -6,17 +6,25 @@ const Experience = () => {
     const experiences = [
         {
             id: 1,
-            role: 'Software Engineer-INTERN',
-            company: 'ivPRO Technologies, Coimbatore,TN, India',
+            role: 'Software Engineer - INTERN',
+            company: 'ivPRO Technologies, Coimbatore, TN, India',
             period: 'December 2025 - February 2026',
-            description: 'Built real-time AI surveillance systems for CCTV/NVR pipelines using YOLO and RTSP.\nImproved detection accuracy, reducing false alerts, and deploying scalable inference APIs.'
+            description: [
+                'Engineered real-time AI surveillance pipelines using YOLO and RTSP, significantly enhancing threat detection speed.',
+                'Boosted detection accuracy while minimizing false positive alerts in complex NVR systems.',
+                'Architected and deployed highly scalable inference APIs to support continuous processing.'
+            ]
         },
         {
             id: 2,
-            role: 'AI/ML- INTERN',
-            company: 'SolutionChamps Technologies, Coimbatore,TN, India',
+            role: 'AI/ML - INTERN',
+            company: 'SolutionChamps Technologies, Coimbatore, TN, India',
             period: 'April 2025 - June 2025',
-            description: "Worked end-to-end on computer vision and NLP systems for wildlife, fire, and threat detection.\nBuilt robust data pipelines, fine-tuned models, and deployed real-time AI solutions."
+            description: [
+                'Spearheaded end-to-end development of localized computer vision and NLP systems for critical threat detection.',
+                'Constructed robust data pipelines to accelerate model training and fine-tuning cycles.',
+                'Successfully deployed production-ready, real-time AI solutions for automated wildlife and fire monitoring.'
+            ]
         }
     ];
 
@@ -55,7 +63,11 @@ const Experience = () => {
                                 <span className="exp-date">{exp.period}</span>
                                 <h3 className="exp-role font-display">{exp.role}</h3>
                                 <h4 className="exp-company">{exp.company}</h4>
-                                <p className="exp-desc">{exp.description}</p>
+                                <ul className="exp-desc-list">
+                                    {exp.description.map((point, idx) => (
+                                        <li key={idx} className="exp-desc-item">{point}</li>
+                                    ))}
+                                </ul>
                             </div>
                         </motion.div>
                     ))}
@@ -66,4 +78,3 @@ const Experience = () => {
 };
 
 export default Experience;
- 

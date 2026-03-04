@@ -191,13 +191,27 @@
     background: var(--accent-green);
 }
 
-.exp-desc {
+.exp-desc-list {
     font-family: 'Outfit', sans-serif;
     font-size: 1.05rem;
     line-height: 1.6;
     color: #d4d4d4;
-    /* Better contrast than #b3b3b3 */
     font-weight: 300;
+    margin: 0;
+    padding-left: 20px;
+    list-style-type: disc;
+    /* Fallback standard bullet */
+}
+
+.exp-desc-item {
+    margin-bottom: 8px;
+    position: relative;
+    /* Removed list-style-type: none to ensure standard bullets work without the pseudo-element if needed, but we'll use custom marker to color them */
+}
+
+.exp-desc-item::marker {
+    color: var(--accent-green);
+    font-size: 1.2rem;
 }
 
 /* Responsive */

@@ -24,10 +24,11 @@ const Hero = () => {
                             <span className="text-outline">AI/ML ENGINEER</span>
                         </h1>
 
-                        <p className="description">
-                            Passionate about building intelligent systems and crafting intuitive user experiences.
-                            Let's solve complex problems together.
-                        </p>
+                      <p className="description">
+  Hey, I’m <strong>Colin Michael</strong>, a third-year CSE student at XIM University, Bhubaneswar, passionate about AI/ML and Data Science.
+  I love building intelligent, data-driven systems that solve real-world problems.
+  Currently seeking internships or part-time roles where I can learn fast and make real impact. 🚀
+</p>
 
                         <a href="#contact" className="hire-btn font-display">GET IN TOUCH</a>
                     </div>
