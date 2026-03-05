@@ -20,31 +20,12 @@ const Header = () => {
         <header className="header">
             <div className="container header-content">
                 <a href="#" className={`logo font-display`}>
-                    <AnimatePresence mode="wait">
-                        {isScrolled ? (
-                            <motion.span
-                                key="short"
-                                initial={{ opacity: 0, width: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, width: 'auto', scale: 1 }}
-                                exit={{ opacity: 0, width: 0, scale: 0.8 }}
-                                transition={{ duration: 0.3 }}
-                                style={{ display: 'inline-block' }}
-                            >
-                                CR
-                            </motion.span>
-                        ) : (
-                            <motion.span
-                                key="full"
-                                initial={{ opacity: 0, width: 0 }}
-                                animate={{ opacity: 1, width: 'auto' }}
-                                exit={{ opacity: 0, width: 0 }}
-                                transition={{ duration: 0.3 }}
-                                style={{ display: 'inline-block', whiteSpace: 'nowrap' }}
-                            >
-                                COLIN ROZARIO
-                            </motion.span>
-                        )}
-                    </AnimatePresence>
+                    <span className={`logo-text-full ${isScrolled ? 'hidden' : ''}`}>
+                        COLIN ROZARIO
+                    </span>
+                    <span className={`logo-text-short ${!isScrolled ? 'hidden' : ''}`}>
+                        CR
+                    </span>
                     <span className="text-accent">.</span>
                 </a>
 

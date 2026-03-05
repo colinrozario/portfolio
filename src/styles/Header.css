@@ -23,13 +23,36 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: white;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
 }
 
-.logo.hidden {
+.logo-text-full,
+.logo-text-short {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.logo-text-full {
+    max-width: 200px;
+    opacity: 1;
+}
+
+.logo-text-full.hidden {
+    max-width: 0;
     opacity: 0;
-    transform: translateY(-20px);
-    pointer-events: none;
+}
+
+.logo-text-short {
+    max-width: 0;
+    opacity: 0;
+}
+
+.logo-text-short:not(.hidden) {
+    max-width: 50px;
+    opacity: 1;
 }
 
 .header-controls {
