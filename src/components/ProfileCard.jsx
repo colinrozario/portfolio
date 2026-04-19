@@ -110,7 +110,7 @@ const ProfileCard = () => {
                     <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" alt="Alex Placeholder" className="profile-img" />
                 </div>
                 <div className="profile-info">
-                    <h2 className="profile-name">Alex Placeholder</h2>
+                    <h2 className="profile-name">Arjun Gupta</h2>
                     <p className="profile-role">
                         Frontend Developer | UI Enthusiast |
                         <br />
@@ -135,7 +135,7 @@ const ProfileCard = () => {
                     <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" alt="Sarah Dummy" className="profile-img" />
                 </div>
                 <div className="profile-info">
-                    <h2 className="profile-name">Sarah Dummy</h2>
+                    <h2 className="profile-name">Alec Baldwin</h2>
                     <p className="profile-role">
                         Data Scientist | Cloud Architect |
                         <br />
