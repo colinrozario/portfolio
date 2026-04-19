@@ -174,79 +174,27 @@
 }
 
 
-/* Creative Lanyard Overlay */
-.lanyard-container {
+/* Illustrative Lanyard SVG Overlay */
+.lanyard-svg-overlay {
     position: absolute;
-    bottom: calc(100% - 26px); /* Attach exactly at the center of the card hole */
+    bottom: calc(100% - 25px); /* Anchor exactly at the card hole */
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
-    height: 100vh; /* Reaches to the top of the screen */
+    width: 200px;
+    height: 100vh; /* Flow all the way up */
     pointer-events: none;
     z-index: 10;
+    overflow: visible;
 }
 
-.lanyard-strap {
-    position: absolute;
-    bottom: 18px; /* Ends just above the top clip */
-    width: 10px;
-    height: 100vh;
-    background: repeating-linear-gradient(
-        -45deg,
-        #111 0,
-        #111 10px,
-        #222 10px,
-        #222 20px
-    );
-    border-left: 1px solid rgba(0, 240, 80, 0.4);
-    border-right: 1px solid rgba(0, 240, 80, 0.4);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-    transform-origin: bottom center;
-    border-radius: 2px;
+/* Animations for the lanyard stroke path to give it a techy moving glow */
+.lanyard-svg-overlay path[stroke-dasharray] {
+    animation: flow-glow 30s linear infinite;
 }
 
-/* Green techy glow on the straps */
-.lanyard-strap::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(0,250,80,0.15), transparent, rgba(0,250,80,0.15));
-}
-
-.left-strap {
-    left: calc(50% - 5px);
-    transform: rotate(-10deg);
-}
-
-.right-strap {
-    left: calc(50% - 5px);
-    transform: rotate(10deg);
-}
-
-/* Metal Clip */
-.lanyard-clip-top {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 14px;
-    height: 12px;
-    background: linear-gradient(to right, #888, #d4d4d4, #888);
-    border-radius: 2px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    z-index: 12;
-}
-
-.lanyard-clip-bottom {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 6px;
-    height: 14px;
-    background: linear-gradient(to right, #555, #999, #555);
-    border-radius: 4px;
-    z-index: 12;
+@keyframes flow-glow {
+    from { stroke-dashoffset: 1000; }
+    to { stroke-dashoffset: 0; }
 }
 
 /* Hole punch effect */

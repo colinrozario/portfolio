@@ -151,13 +151,57 @@ const ProfileCard = () => {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
-            {/* Lanyard Overlay */}
-            <div className="lanyard-container">
-                <div className="lanyard-strap left-strap"></div>
-                <div className="lanyard-strap right-strap"></div>
-                <div className="lanyard-clip-top"></div>
-                <div className="lanyard-clip-bottom"></div>
-            </div>
+            {/* Illustrative Flowing Lanyard */}
+            <svg className="lanyard-svg-overlay" viewBox="0 0 200 1000" preserveAspectRatio="xMidYMax slice">
+                <defs>
+                    <linearGradient id="lanyardGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#111" />
+                        <stop offset="50%" stopColor="#333" />
+                        <stop offset="100%" stopColor="#111" />
+                    </linearGradient>
+                    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="transparent" />
+                        <stop offset="80%" stopColor="rgba(0, 240, 80, 0.6)" />
+                        <stop offset="100%" stopColor="rgba(0, 240, 80, 0)" />
+                    </linearGradient>
+                </defs>
+                
+                {/* Back strap (shadow/perspective) */}
+                <path 
+                    d="M 50,-100 C 180,200 -20,500 90,800 L 98,985" 
+                    fill="none" 
+                    stroke="#1a1a1a" 
+                    strokeWidth="10" 
+                    strokeLinecap="round" 
+                />
+                
+                {/* Main front flowing strap */}
+                <path 
+                    d="M 120,-100 C -50,250 250,550 102,985" 
+                    fill="none" 
+                    stroke="url(#lanyardGrad)" 
+                    strokeWidth="14" 
+                    strokeLinecap="round" 
+                />
+
+                {/* Techy glowing track along the front strap */}
+                <path 
+                    d="M 120,-100 C -50,250 250,550 102,985" 
+                    fill="none" 
+                    stroke="url(#accentGrad)" 
+                    strokeWidth="3" 
+                    strokeDasharray="15 10"
+                    strokeLinecap="round" 
+                />
+
+                {/* Metal Clip connecting lanyard to the card */}
+                <g transform="translate(90, 975)">
+                    <rect x="0" y="0" width="20" height="15" rx="3" fill="#666" />
+                    <rect x="2" y="2" width="16" height="11" rx="2" fill="#999" />
+                    {/* Ring/Hook */}
+                    <path d="M 10,15 C 5,20 5,25 10,25 C 15,25 15,20 10,15" fill="none" stroke="#777" strokeWidth="3" />
+                </g>
+            </svg>
 
             {/* Ghost Cards (Background) */}
             <motion.div className="ghost-card ghost-1" variants={ghostCard1}>
