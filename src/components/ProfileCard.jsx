@@ -151,13 +151,13 @@ const ProfileCard = () => {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
-            {/* Dogtag Chain Overlay positioned relative to wrapper */}
-            <svg className="chain-overlay" viewBox="0 0 300 600">
-                <motion.path
-                    d="M 150 0 L 150 100" // Simple string hanging down to card center-ish
-                    className="chain-path"
-                />
-            </svg>
+            {/* Lanyard Overlay */}
+            <div className="lanyard-container">
+                <div className="lanyard-strap left-strap"></div>
+                <div className="lanyard-strap right-strap"></div>
+                <div className="lanyard-clip-top"></div>
+                <div className="lanyard-clip-bottom"></div>
+            </div>
 
             {/* Ghost Cards (Background) */}
             <motion.div className="ghost-card ghost-1" variants={ghostCard1}>
