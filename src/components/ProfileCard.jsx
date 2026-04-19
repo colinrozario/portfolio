@@ -43,20 +43,23 @@ const ProfileCard = () => {
         // Reset tilt so cards are flat during shuffle
         x.set(0); y.set(0);
 
-        // Step 1: Main left/back, Ghost1 front, Ghost2 right/back
-        controlsMain.start({ x: -120, rotate: -15, scale: 0.85, zIndex: 1, transition: { duration: 0.3 } });
-        controlsGhost1.start({ x: 0, rotate: 0, scale: 1, zIndex: 10, transition: { duration: 0.3 } });
-        await controlsGhost2.start({ x: 120, rotate: 15, scale: 0.85, zIndex: 0, transition: { duration: 0.3 } });
+        // Step 1: Main slides Right/Back. Ghost1 -> Front. Ghost2 -> Middle.
+        controlsMain.start({ x: 140, y: -20, rotate: 15, scale: 0.85, zIndex: 1, transition: { duration: 0.3 } });
+        controlsGhost1.start({ x: 0, y: 0, rotate: 0, scale: 1, zIndex: 10, transition: { duration: 0.3 } });
+        await controlsGhost2.start({ x: 0, y: 0, rotate: -5, scale: 0.95, zIndex: 2, transition: { duration: 0.3 } });
 
-        // Step 2: Ghost1 right/back, Ghost2 front, Main left/back waiting to pop
-        controlsGhost1.start({ x: 120, rotate: 15, scale: 0.85, zIndex: 0, transition: { duration: 0.3 } });
-        controlsGhost2.start({ x: 0, rotate: 0, scale: 1, zIndex: 10, transition: { duration: 0.3 } });
-        await controlsMain.start({ x: -120, rotate: -15, scale: 0.85, zIndex: 1, transition: { duration: 0.3 } });
+        // Step 2: Ghost1 slides Left/Back. Ghost2 -> Front. Main -> Middle.
+        controlsGhost1.start({ x: -140, y: -20, rotate: -15, scale: 0.85, zIndex: 1, transition: { duration: 0.3 } });
+        controlsGhost2.start({ x: 0, y: 0, rotate: 0, scale: 1, zIndex: 10, transition: { duration: 0.3 } });
+        await controlsMain.start({ x: 0, y: 0, rotate: 5, scale: 0.95, zIndex: 2, transition: { duration: 0.3 } });
 
-        // Step 3: Main pops back to front center, ghosts settle
-        controlsGhost1.start({ x: 0, rotate: -5, scale: 0.95, zIndex: 2, transition: { duration: 0.4, type: 'spring' } });
-        controlsGhost2.start({ x: 0, rotate: 5, scale: 0.9, zIndex: 1, transition: { duration: 0.4, type: 'spring' } });
-        await controlsMain.start({ x: 0, rotate: 0, scale: 1, zIndex: 10, transition: { duration: 0.4, type: 'spring' } });
+        // Step 3: Ghost2 slides Right/Back. Main pops to Front.
+        controlsGhost2.start({ x: 140, y: -20, rotate: 15, scale: 0.85, zIndex: 1, transition: { duration: 0.3 } });
+        controlsMain.start({ x: 0, y: 0, rotate: 0, scale: 1, zIndex: 10, transition: { type: 'spring', damping: 15, stiffness: 100 } });
+        await controlsGhost1.start({ x: 0, y: 0, rotate: -5, scale: 0.95, zIndex: 2, transition: { type: 'spring', damping: 15, stiffness: 100 } });
+
+        // Settle ghost 2 perfectly in back
+        controlsGhost2.start({ x: 0, y: 0, rotate: 5, scale: 0.9, zIndex: 1, transition: { type: 'spring', damping: 15, stiffness: 100 } });
 
         setIsShuffling(false);
     };
