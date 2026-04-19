@@ -10,7 +10,7 @@ const Hero = () => {
                 <div className="hero-grid">
                     <div className="hero-content">
                         <motion.div
-                            className="availability-badge font-tech"
+                            className="availability-badge font-display"
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
@@ -30,7 +30,7 @@ const Hero = () => {
   Currently seeking internships or part-time roles where I can learn fast and make real impact. 
 </p>
 
-                        <a href="#contact" className="hire-btn font-tech">GET IN TOUCH</a>
+                        <a href="#contact" className="hire-btn font-display">GET IN TOUCH</a>
                     </div>
 
                     <div className="hero-visual">
