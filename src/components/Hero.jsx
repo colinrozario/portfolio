@@ -10,7 +10,7 @@ const Hero = () => {
                 <div className="hero-grid">
                     <div className="hero-content">
                         <motion.div
-                            className="availability-badge font-display"
+                            className="availability-badge font-tech"
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
@@ -18,8 +18,8 @@ const Hero = () => {
                             <span className="pulse-dot"></span>
                             Looking for opportunities
                         </motion.div>
-                        <h2 className="greeting font-display">HI! I'M COLIN ROZARIO</h2>
-                        <h1 className="title font-display">
+                        <h2 className="greeting font-tech">HI! I'M COLIN ROZARIO</h2>
+                        <h1 className="title font-tech">
                             ASPIRING <br />
                             <span className="text-outline">AI/ML ENGINEER</span>
                         </h1>
@@ -30,7 +30,7 @@ const Hero = () => {
   Currently seeking internships or part-time roles where I can learn fast and make real impact. 
 </p>
 
-                        <a href="#contact" className="hire-btn font-display">GET IN TOUCH</a>
+                        <a href="#contact" className="hire-btn font-tech">GET IN TOUCH</a>
                     </div>
 
                     <div className="hero-visual">
