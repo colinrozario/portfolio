@@ -198,7 +198,7 @@ const ProfileCard = () => {
                 <div className="profile-info">
                     <h2 className="profile-name">Colin Rozario</h2>
                     <p className="profile-role">
-                        Software Engineer | AI/ML Enthusiast | 
+                        Computer Science Engineer | AI/ML Enthusiast |
                         <br />
                         FIND ME HERE:
 
