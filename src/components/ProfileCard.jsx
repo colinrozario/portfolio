@@ -151,21 +151,10 @@ const ProfileCard = () => {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
-            {/* Simple Organic String / Rope */}
-            <svg className="lanyard-svg-overlay" viewBox="0 0 200 1000" preserveAspectRatio="xMidYMax slice">
-                <path 
-                    d="M 150,-100 Q 250,200 100,450 T 130,750 T 100,990" 
-                    fill="none" 
-                    stroke="#DEDEDE" 
-                    strokeWidth="2.5" 
-                    strokeLinecap="round"
-                    style={{ filter: 'drop-shadow(0px 2px 4px rgba(0,0,0,0.5))' }}
-                />
-            </svg>
+
 
             {/* Ghost Cards (Background) */}
             <motion.div className="ghost-card ghost-1" variants={ghostCard1}>
-                <div className="card-hole"></div>
                 <div className="profile-img-container"></div>
                 <div className="ghost-lines">
                     <div className="ghost-line title"></div>
@@ -174,7 +163,6 @@ const ProfileCard = () => {
                 </div>
             </motion.div>
             <motion.div className="ghost-card ghost-2" variants={ghostCard2}>
-                <div className="card-hole"></div>
                 <div className="profile-img-container"></div>
                 <div className="ghost-lines">
                     <div className="ghost-line title"></div>
@@ -193,7 +181,6 @@ const ProfileCard = () => {
                     transformStyle: "preserve-3d",
                 }}
             >
-                <div className="card-hole"></div>
 
                 <div className="profile-img-container">
                     <img src={profileImg} alt="Colin Rozario" className="profile-img" />

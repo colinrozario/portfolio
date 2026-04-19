@@ -174,34 +174,7 @@
 }
 
 
-/* Illustrative Lanyard SVG Overlay */
-.lanyard-svg-overlay {
-    position: absolute;
-    bottom: calc(100% - 25px); /* Anchor exactly at the card hole */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 100vh; /* Flow all the way up */
-    pointer-events: none;
-    z-index: 10;
-    overflow: visible;
-}
 
-
-
-/* Hole punch effect */
-.card-hole {
-    position: absolute;
-    top: 20px;
-    /* Aligns with where string meets card */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 12px;
-    height: 12px;
-    background: #333;
-    border-radius: 50%;
-    z-index: 15;
-}
 
 @media (max-width: 768px) {
     .profile-card-wrapper {
