@@ -106,11 +106,22 @@ const ProfileCard = () => {
                 onMouseEnter={handleGhost1Hover}
                 onMouseLeave={handleGhost1Leave}
             >
-                <div className="profile-img-container"></div>
-                <div className="ghost-lines">
-                    <div className="ghost-line title"></div>
-                    <div className="ghost-line text"></div>
-                    <div className="ghost-line text"></div>
+                <div className="profile-img-container">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" alt="Alex Placeholder" className="profile-img" />
+                </div>
+                <div className="profile-info">
+                    <h2 className="profile-name">Alex Placeholder</h2>
+                    <p className="profile-role">
+                        Frontend Developer | UI Enthusiast |
+                        <br />
+                        FIND ME HERE:
+                    </p>
+                    <div className="profile-socials">
+                        <a href="#" className="social-icon gmail" title="Gmail"><SiGmail /></a>
+                        <a href="#" className="social-icon linkedin" title="LinkedIn"><SiLinkedin /></a>
+                        <a href="#" className="social-icon github" title="GitHub"><SiGithub /></a>
+                        <a href="#" className="social-icon kaggle" title="Kaggle"><SiKaggle /></a>
+                    </div>
                 </div>
             </motion.div>
             
@@ -120,11 +131,22 @@ const ProfileCard = () => {
                 onMouseEnter={handleGhost2Hover}
                 onMouseLeave={handleGhost2Leave}
             >
-                <div className="profile-img-container"></div>
-                <div className="ghost-lines">
-                    <div className="ghost-line title"></div>
-                    <div className="ghost-line text"></div>
-                    <div className="ghost-line text"></div>
+                <div className="profile-img-container">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" alt="Sarah Dummy" className="profile-img" />
+                </div>
+                <div className="profile-info">
+                    <h2 className="profile-name">Sarah Dummy</h2>
+                    <p className="profile-role">
+                        Data Scientist | Cloud Architect |
+                        <br />
+                        FIND ME HERE:
+                    </p>
+                    <div className="profile-socials">
+                        <a href="#" className="social-icon gmail" title="Gmail"><SiGmail /></a>
+                        <a href="#" className="social-icon linkedin" title="LinkedIn"><SiLinkedin /></a>
+                        <a href="#" className="social-icon github" title="GitHub"><SiGithub /></a>
+                        <a href="#" className="social-icon kaggle" title="Kaggle"><SiKaggle /></a>
+                    </div>
                 </div>
             </motion.div>
 
