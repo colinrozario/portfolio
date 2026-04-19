@@ -18,14 +18,14 @@ const Hero = () => {
                             <span className="pulse-dot"></span>
                             Looking for opportunities
                         </motion.div>
-                        <h2 className="greeting font-tech">HI! I'M COLIN ROZARIO</h2>
-                        <h1 className="title font-tech">
+                        <h2 className="greeting font-display">HI! I'M COLIN ROZARIO</h2>
+                        <h1 className="title font-display">
                             ASPIRING <br />
                             <span className="text-outline">AI/ML ENGINEER</span>
                         </h1>
 
                       <p className="description">
-  Hey, I’m <strong>Colin Rozario</strong>, a third-year CSE student at XIM University, Bhubaneswar, passionate about AI/ML and Data Science.
+  Hey there, I’m <strong>Colin Rozario</strong>, a third-year CSE student at XIM University, Bhubaneswar, passionate about AI/ML and Data Science.
   I love building intelligent, data-driven systems that solve real-world problems.
   Currently seeking internships or part-time roles where I can learn fast and make real impact. 
 </p>
