@@ -187,15 +187,7 @@
     overflow: visible;
 }
 
-/* Animations for the lanyard stroke path to give it a techy moving glow */
-.lanyard-svg-overlay path[stroke-dasharray] {
-    animation: flow-glow 30s linear infinite;
-}
 
-@keyframes flow-glow {
-    from { stroke-dashoffset: 1000; }
-    to { stroke-dashoffset: 0; }
-}
 
 /* Hole punch effect */
 .card-hole {
