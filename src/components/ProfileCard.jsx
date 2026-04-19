@@ -76,11 +76,6 @@ const ProfileCard = () => {
             controlsGhost1.start({ y: 0, opacity: 1, rotate: -5, scale: 0.95, transition: { type: 'spring', stiffness: 50, damping: 15 }});
             controlsGhost2.start({ y: 0, opacity: 1, rotate: 5, scale: 0.9, transition: { delay: 0.1, type: 'spring', stiffness: 50, damping: 15 }});
             await controlsMain.start({ y: 0, opacity: 1, transition: { delay: 0.2, type: 'spring', stiffness: 60, damping: 12 }});
-
-            // Trigger the first shuffle
-            setTimeout(() => {
-                playShuffleSequence();
-            }, 500); // Wait half a sec after drop in
         };
         initialLoad();
     }, []);
