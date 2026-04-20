@@ -112,10 +112,10 @@ const ProfileCard = () => {
                         FIND ME HERE:
                     </p>
                     <div className="profile-socials">
-                        <a href="#" className="social-icon gmail" title="Gmail"><SiGmail /></a>
-                        <a href="#" className="social-icon linkedin" title="LinkedIn"><SiLinkedin /></a>
-                        <a href="#" className="social-icon github" title="GitHub"><SiGithub /></a>
-                        <a href="#" className="social-icon kaggle" title="Kaggle"><SiKaggle /></a>
+                        <a href="#" className="profile-social-icon gmail" title="Gmail"><SiGmail /></a>
+                        <a href="#" className="profile-social-icon linkedin" title="LinkedIn"><SiLinkedin /></a>
+                        <a href="#" className="profile-social-icon github" title="GitHub"><SiGithub /></a>
+                        <a href="#" className="profile-social-icon kaggle" title="Kaggle"><SiKaggle /></a>
                     </div>
                 </div>
             </motion.div>
@@ -137,10 +137,10 @@ const ProfileCard = () => {
                         FIND ME HERE:
                     </p>
                     <div className="profile-socials">
-                        <a href="#" className="social-icon gmail" title="Gmail"><SiGmail /></a>
-                        <a href="#" className="social-icon linkedin" title="LinkedIn"><SiLinkedin /></a>
-                        <a href="#" className="social-icon github" title="GitHub"><SiGithub /></a>
-                        <a href="#" className="social-icon kaggle" title="Kaggle"><SiKaggle /></a>
+                        <a href="#" className="profile-social-icon gmail" title="Gmail"><SiGmail /></a>
+                        <a href="#" className="profile-social-icon linkedin" title="LinkedIn"><SiLinkedin /></a>
+                        <a href="#" className="profile-social-icon github" title="GitHub"><SiGithub /></a>
+                        <a href="#" className="profile-social-icon kaggle" title="Kaggle"><SiKaggle /></a>
                     </div>
                 </div>
             </motion.div>
@@ -168,10 +168,10 @@ const ProfileCard = () => {
                     </p>
 
                     <div className="profile-socials">
-                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=colinmichaeldrozario1@gmail.com" target="_blank" rel="noreferrer" className="social-icon gmail" title="Gmail"><SiGmail /></a>
-                        <a href="https://linkedin.com/in/colin-michael-d-rozario-b03258196/" target="_blank" rel="noreferrer" className="social-icon linkedin" title="LinkedIn"><SiLinkedin /></a>
-                        <a href="https://github.com/colinrozario" target="_blank" rel="noreferrer" className="social-icon github" title="GitHub"><SiGithub /></a>
-                        <a href="https://www.kaggle.com/colinmichaeldrozario" target="_blank" rel="noreferrer" className="social-icon kaggle" title="Kaggle"><SiKaggle /></a>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=colinmichaeldrozario1@gmail.com" target="_blank" rel="noreferrer" className="profile-social-icon gmail" title="Gmail"><SiGmail /></a>
+                        <a href="https://linkedin.com/in/colin-michael-d-rozario-b03258196/" target="_blank" rel="noreferrer" className="profile-social-icon linkedin" title="LinkedIn"><SiLinkedin /></a>
+                        <a href="https://github.com/colinrozario" target="_blank" rel="noreferrer" className="profile-social-icon github" title="GitHub"><SiGithub /></a>
+                        <a href="https://www.kaggle.com/colinmichaeldrozario" target="_blank" rel="noreferrer" className="profile-social-icon kaggle" title="Kaggle"><SiKaggle /></a>
                     </div>
                 </div>
             </motion.div>
