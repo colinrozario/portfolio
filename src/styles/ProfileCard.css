@@ -154,17 +154,29 @@
 .profile-social-icon.gmail {
     color: #DB4437;
 }
+.profile-social-icon.gmail:hover {
+    color: #DB4437 !important;
+}
 
 .profile-social-icon.linkedin {
     color: #0077b5;
+}
+.profile-social-icon.linkedin:hover {
+    color: #0077b5 !important;
 }
 
 .profile-social-icon.github {
     color: #333;
 }
+.profile-social-icon.github:hover {
+    color: #333 !important;
+}
 
 .profile-social-icon.kaggle {
     color: #20BEFF;
+}
+.profile-social-icon.kaggle:hover {
+    color: #20BEFF !important;
 }
 
 .profile-social-icon:hover {
