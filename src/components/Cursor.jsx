@@ -4,6 +4,7 @@ import '../styles/Cursor.css';
 
 const Cursor = () => {
     const [isHovered, setIsHovered] = useState(false);
+    const [isHoveredNoInvert, setIsHoveredNoInvert] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
 
     // Mouse position state
@@ -29,6 +30,9 @@ const Cursor = () => {
         const handleMouseEnter = () => setIsHovered(true);
         const handleMouseLeave = () => setIsHovered(false);
 
+        const handleMouseEnterNoInvert = () => setIsHoveredNoInvert(true);
+        const handleMouseLeaveNoInvert = () => setIsHoveredNoInvert(false);
+
         // Track mouse movement
         window.addEventListener('mousemove', moveCursor);
         window.addEventListener('mousedown', handleMouseDown);
@@ -41,14 +45,24 @@ const Cursor = () => {
             );
 
             interactiveElements.forEach((el) => {
-                el.addEventListener('mouseenter', handleMouseEnter);
-                el.addEventListener('mouseleave', handleMouseLeave);
+                if (el.classList.contains('profile-social-icon')) {
+                    el.addEventListener('mouseenter', handleMouseEnterNoInvert);
+                    el.addEventListener('mouseleave', handleMouseLeaveNoInvert);
+                } else {
+                    el.addEventListener('mouseenter', handleMouseEnter);
+                    el.addEventListener('mouseleave', handleMouseLeave);
+                }
             });
 
             return () => {
                 interactiveElements.forEach((el) => {
-                    el.removeEventListener('mouseenter', handleMouseEnter);
-                    el.removeEventListener('mouseleave', handleMouseLeave);
+                    if (el.classList.contains('profile-social-icon')) {
+                        el.removeEventListener('mouseenter', handleMouseEnterNoInvert);
+                        el.removeEventListener('mouseleave', handleMouseLeaveNoInvert);
+                    } else {
+                        el.removeEventListener('mouseenter', handleMouseEnter);
+                        el.removeEventListener('mouseleave', handleMouseLeave);
+                    }
                 });
             };
         };
@@ -87,6 +101,14 @@ const Cursor = () => {
             backgroundColor: "white", // Fill the ring
             border: "1px solid white",
         },
+        hoverNoInvert: {
+            height: 64,
+            width: 64,
+            x: -32,
+            y: -32,
+            backgroundColor: "transparent", // Don't fill the ring to avoid inverting the colors underneath
+            border: "2px solid white",
+        },
         click: {
             scale: 0.8,
             transition: { duration: 0.1 }
@@ -114,7 +136,7 @@ const Cursor = () => {
                     translateY: mouseY,
                 }}
                 variants={dotVariants}
-                animate={isHovered ? "hover" : "default"}
+                animate={(isHovered || isHoveredNoInvert) ? "hover" : "default"}
             />
 
             {/* The Ring: Follows with physics */}
@@ -125,7 +147,7 @@ const Cursor = () => {
                     translateY: springY,
                 }}
                 variants={ringVariants}
-                animate={isClicked ? "click" : isHovered ? "hover" : "default"}
+                animate={isClicked ? "click" : isHoveredNoInvert ? "hoverNoInvert" : isHovered ? "hover" : "default"}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
             />
         </>
